@@ -182,7 +182,7 @@ function TerminalConfessional({ isKr }) {
       {/* Terminal Output */}
       <div ref={scrollRef} className="p-6 h-64 overflow-y-auto no-scrollbar space-y-3">
         {logs.map((log, i) => (
-          <div key={i} className={`${log.type === 'user' ? 'text-paper' : 'text-sage'} opacity-90 leading-relaxed`}>
+          <div key={i} className={`${log.type === 'user' ? 'text-[#FAFAF5]' : 'text-sage'} opacity-90 leading-relaxed`}>
             {log.text}
           </div>
         ))}
@@ -200,7 +200,7 @@ function TerminalConfessional({ isKr }) {
           onChange={(e) => setInput(e.target.value)}
           disabled={isProcessing}
           placeholder={isKr ? "고해할 내용을 입력하세요 (예: Stack Overflow 코드를 훔쳤습니다)" : "Type your confession (e.g., I stole code from Stack Overflow)"}
-          className="flex-1 bg-transparent text-paper outline-none placeholder:text-paper/20 disabled:opacity-50"
+          className="flex-1 bg-transparent text-[#FAFAF5] outline-none placeholder:text-[#FAFAF5]/40 disabled:opacity-50"
           autoComplete="off"
         />
         <button type="submit" disabled={isProcessing || !input.trim()} className="opacity-0 w-0 h-0">Submit</button>
