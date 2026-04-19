@@ -28,6 +28,13 @@ function ConfessionalView({ t, lang }) {
         meta={meta}
       />
 
+      {/* Interactive Terminal Confessional */}
+      <section className="bg-ink border-b border-paper/10">
+        <div className="max-w-[1000px] mx-auto px-6 py-16">
+          <TerminalConfessional isKr={isKr} />
+        </div>
+      </section>
+
       {/* Stats strip */}
       <section className="border-b border-ink bg-ink text-paper">
         <div className="max-w-[1400px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4">
@@ -115,6 +122,90 @@ function TestimonyCard({ item, C, isKr, idx }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function TerminalConfessional({ isKr }) {
+  const [input, setInput] = React.useState('');
+  const [logs, setLogs] = React.useState([
+    { type: 'sys', text: isKr ? 'halus.dev 도덕 터미널에 접속되었습니다.' : 'Connected to halus.dev moral terminal.' },
+    { type: 'sys', text: isKr ? '당신의 커밋, 혹은 마음의 짐을 고백하십시오.' : 'Confess your commit, or the burden on your soul.' },
+  ]);
+  const [isProcessing, setIsProcessing] = React.useState(false);
+  const scrollRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+  }, [logs]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim() || isProcessing) return;
+
+    const userText = input.trim();
+    setInput('');
+    setLogs(prev => [...prev, { type: 'user', text: '> ' + userText }]);
+    setIsProcessing(true);
+
+    const steps = isKr ? [
+      { t: 600,  text: '[진단] 도덕적 지연(Moral Latency) 계산 중...' },
+      { t: 1400, text: '[경고] 출처 누락 및 이기적 강제 푸시 서명 감지됨.' },
+      { t: 2200, text: '[처방] 108배 배례 권고 및 사죄 서신 큐(Queue) 자동 등록 중...' },
+      { t: 3000, text: '[완료] 당신의 짐이 가벼워졌습니다. 분산 원장에 기록됨.' },
+    ] : [
+      { t: 600,  text: '[SCAN] Calculating Moral Latency...' },
+      { t: 1400, text: '[WARN] Unattributed fork and selfish force-push detected.' },
+      { t: 2200, text: '[REMEDY] 108 bows required. Queuing automated apology letters...' },
+      { t: 3000, text: '[DONE] Your load is lightened. Logged to the distributed ledger.' },
+    ];
+
+    for (const step of steps) {
+      await new Promise(r => setTimeout(r, step.t / steps.length));
+      setLogs(prev => [...prev, { type: 'sys', text: step.text }]);
+    }
+    
+    setIsProcessing(false);
+  };
+
+  return (
+    <div className="w-full bg-[#050505] border border-gold/30 rounded-sm overflow-hidden flex flex-col font-mono text-[13px] shadow-[0_0_30px_rgba(176,137,52,0.1)]">
+      {/* Terminal Title Bar */}
+      <div className="flex items-center px-4 py-2 bg-paper/5 border-b border-gold/20">
+        <div className="flex gap-2">
+          <div className="w-2.5 h-2.5 rounded-full bg-ash/50"/>
+          <div className="w-2.5 h-2.5 rounded-full bg-ash/50"/>
+          <div className="w-2.5 h-2.5 rounded-full bg-ash/50"/>
+        </div>
+        <div className="mx-auto text-gold/70 tracking-[0.2em] uppercase text-[10px]">The Confessional</div>
+      </div>
+      
+      {/* Terminal Output */}
+      <div ref={scrollRef} className="p-6 h-64 overflow-y-auto no-scrollbar space-y-3">
+        {logs.map((log, i) => (
+          <div key={i} className={`${log.type === 'user' ? 'text-paper' : 'text-sage'} opacity-90 leading-relaxed`}>
+            {log.text}
+          </div>
+        ))}
+        {isProcessing && (
+          <div className="text-sage opacity-50 animate-pulse">_</div>
+        )}
+      </div>
+
+      {/* Terminal Input */}
+      <form onSubmit={handleSubmit} className="px-6 py-4 border-t border-paper/10 flex items-center bg-[#080808]">
+        <span className="text-gold mr-3">{'>'}</span>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          disabled={isProcessing}
+          placeholder={isKr ? "고해할 내용을 입력하세요 (예: Stack Overflow 코드를 훔쳤습니다)" : "Type your confession (e.g., I stole code from Stack Overflow)"}
+          className="flex-1 bg-transparent text-paper outline-none placeholder:text-paper/20 disabled:opacity-50"
+          autoComplete="off"
+        />
+        <button type="submit" disabled={isProcessing || !input.trim()} className="opacity-0 w-0 h-0">Submit</button>
+      </form>
+    </div>
   );
 }
 

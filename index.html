@@ -13,14 +13,14 @@
     theme: {
       extend: {
         colors: {
-          paper:   '#FAFAF5',
-          parch:   '#F1ECDD',
-          ink:     '#0A0A0A',
-          gold:    '#B08934',
-          goldlt:  '#D4B970',
-          sage:    '#8A9A7A',
-          sagedk:  '#5C6B52',
-          ash:     '#3A3A36',
+          paper:   'var(--c-paper)',
+          parch:   'var(--c-parch)',
+          ink:     'var(--c-ink)',
+          gold:    'var(--c-gold)',
+          goldlt:  'var(--c-goldlt)',
+          sage:    'var(--c-sage)',
+          sagedk:  'var(--c-sagedk)',
+          ash:     'var(--c-ash)',
         },
         fontFamily: {
           serif: ['"Cormorant Garamond"', 'serif'],
@@ -37,46 +37,68 @@
 <!-- lucide icons as UMD -->
 <script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
 <style>
-  html, body { background: #FAFAF5; color: #0A0A0A; }
+  :root {
+    --c-paper: #FAFAF5;
+    --c-parch: #F1ECDD;
+    --c-ink: #0A0A0A;
+    --c-gold: #B08934;
+    --c-goldlt: #D4B970;
+    --c-sage: #8A9A7A;
+    --c-sagedk: #5C6B52;
+    --c-ash: #3A3A36;
+  }
+
+  .theme-crypt {
+    --c-paper: #080808;
+    --c-parch: #131210;
+    --c-ink: #E6E3DB;
+    --c-gold: #C29A44;
+    --c-goldlt: #E8CC8B;
+    --c-sage: #9AB08A;
+    --c-sagedk: #738A66;
+    --c-ash: #8A8982;
+  }
+
+  html, body { background: var(--c-paper); color: var(--c-ink); transition: background-color 0.4s ease, color 0.4s ease; }
   body { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
   .font-kr { font-family: 'Noto Serif KR', serif; }
   .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
-  /* paper grain */
+  /* paper/crypt grain */
   .paper-grain {
-    background-color: #FAFAF5;
+    background-color: var(--c-paper);
     background-image:
-      radial-gradient(rgba(10,10,10,0.035) 1px, transparent 1px),
-      radial-gradient(rgba(176,137,52,0.04) 1px, transparent 1px);
+      radial-gradient(color-mix(in srgb, var(--c-ink) 3.5%, transparent) 1px, transparent 1px),
+      radial-gradient(color-mix(in srgb, var(--c-gold) 4%, transparent) 1px, transparent 1px);
     background-size: 3px 3px, 7px 7px;
     background-position: 0 0, 1px 2px;
   }
   .parch-grain {
-    background-color: #F1ECDD;
-    background-image: radial-gradient(rgba(10,10,10,0.05) 1px, transparent 1px);
+    background-color: var(--c-parch);
+    background-image: radial-gradient(color-mix(in srgb, var(--c-ink) 5%, transparent) 1px, transparent 1px);
     background-size: 3px 3px;
   }
 
   /* sun/halo behind hero */
   .halo {
-    background: radial-gradient(closest-side, rgba(212,185,112,0.35), rgba(212,185,112,0.08) 55%, transparent 72%);
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--c-goldlt) 35%, transparent), color-mix(in srgb, var(--c-goldlt) 8%, transparent) 55%, transparent 72%);
   }
 
   /* gold rays */
   .ray {
     position: absolute;
     width: 1px;
-    background: linear-gradient(to bottom, transparent, #D4B970 30%, #D4B970 70%, transparent);
+    background: linear-gradient(to bottom, transparent, var(--c-goldlt) 30%, var(--c-goldlt) 70%, transparent);
     transform-origin: top center;
   }
 
   /* marching ants for "anointed" borders */
   .anointed {
     background-image:
-      linear-gradient(90deg, #B08934 50%, transparent 50%),
-      linear-gradient(90deg, #B08934 50%, transparent 50%),
-      linear-gradient(0deg, #B08934 50%, transparent 50%),
-      linear-gradient(0deg, #B08934 50%, transparent 50%);
+      linear-gradient(90deg, var(--c-gold) 50%, transparent 50%),
+      linear-gradient(90deg, var(--c-gold) 50%, transparent 50%),
+      linear-gradient(0deg, var(--c-gold) 50%, transparent 50%),
+      linear-gradient(0deg, var(--c-gold) 50%, transparent 50%);
     background-size: 8px 1px, 8px 1px, 1px 8px, 1px 8px;
     background-position: 0 0, 0 100%, 0 0, 100% 0;
     background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
@@ -90,16 +112,16 @@
     line-height: 0.85;
     float: left;
     padding: 0.35rem 0.6rem 0 0;
-    color: #B08934;
+    color: var(--c-gold);
     font-style: italic;
   }
 
   /* thin rule */
-  .rule { height: 1px; background: #0A0A0A; }
-  .rule-gold { height: 1px; background: #B08934; }
+  .rule { height: 1px; background: var(--c-ink); }
+  .rule-gold { height: 1px; background: var(--c-gold); }
 
   /* selection */
-  ::selection { background: #B08934; color: #FAFAF5; }
+  ::selection { background: var(--c-gold); color: var(--c-paper); }
 
   /* kbd style counter */
   .counter-digit {
@@ -125,7 +147,7 @@
   .watermark-scan {
     background-image: repeating-linear-gradient(
       45deg,
-      rgba(176,137,52,0.12) 0 2px,
+      color-mix(in srgb, var(--c-gold) 12%, transparent) 0 2px,
       transparent 2px 14px
     );
   }
@@ -147,10 +169,14 @@
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle closest-side, rgba(212,185,112,0.06), transparent);
+    background: radial-gradient(circle closest-side, color-mix(in srgb, var(--c-goldlt) 6%, transparent), transparent);
     mix-blend-mode: multiply;
     transition: opacity 0.3s ease;
     opacity: 0;
+  }
+  .theme-crypt #cursor-halo {
+    mix-blend-mode: screen;
+    background: radial-gradient(circle closest-side, color-mix(in srgb, var(--c-goldlt) 6%, transparent), transparent);
   }
 </style>
 </head>

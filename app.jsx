@@ -19,6 +19,10 @@ function App() {
     try { return localStorage.getItem('halus:view') || 'home'; } catch { return 'home'; }
   });
 
+  const [theme, setTheme] = React.useState(() => {
+    try { return localStorage.getItem('halus:theme') || 'paper'; } catch { return 'paper'; }
+  });
+
   React.useEffect(() => {
     try { localStorage.setItem('halus:lang', lang); } catch {}
     document.documentElement.lang = lang === 'kr' ? 'ko' : 'en';
@@ -26,6 +30,14 @@ function App() {
   React.useEffect(() => {
     try { localStorage.setItem('halus:view', view); } catch {}
   }, [view]);
+  React.useEffect(() => {
+    try { localStorage.setItem('halus:theme', theme); } catch {}
+    if (theme === 'crypt') {
+      document.body.classList.add('theme-crypt');
+    } else {
+      document.body.classList.remove('theme-crypt');
+    }
+  }, [theme]);
 
   const t = COPY[lang];
 
@@ -41,7 +53,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <StatusBar t={t} lang={lang} setLang={setLang}/>
-      <Nav t={t} lang={lang} view={view} setView={setView}/>
+      <Nav t={t} lang={lang} view={view} setView={setView} theme={theme} setTheme={setTheme}/>
       <main>{body}</main>
       <Footer t={t} lang={lang} setView={setView}/>
     </div>

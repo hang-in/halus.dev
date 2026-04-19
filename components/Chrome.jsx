@@ -37,7 +37,7 @@ function StatusBar({ t, lang, setLang }) {
   );
 }
 
-function Nav({ t, lang, view, setView }) {
+function Nav({ t, lang, view, setView, theme, setTheme }) {
   const isKr = lang === 'kr';
   const routes = [
     { k: 'home',         label: t.routes.home },
@@ -86,13 +86,22 @@ function Nav({ t, lang, view, setView }) {
           })}
         </div>
 
-        <a
-          href="#"
-          className={`group relative inline-flex items-center gap-2 px-4 py-2 border border-ink hover:bg-ink hover:text-paper transition-colors shrink-0 ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.22em] uppercase'}`}
-        >
-          <Cross size={10}/>
-          {t.nav.login}
-        </a>
+        <div className="flex items-center gap-4 shrink-0">
+          <button
+            onClick={() => setTheme(theme === 'paper' ? 'crypt' : 'paper')}
+            className={`p-2 border transition-colors ${theme === 'crypt' ? 'border-gold text-gold bg-ink' : 'border-ink text-ink hover:bg-parch'}`}
+            title="Toggle The Crypt"
+          >
+            {theme === 'crypt' ? <LucideIcon name="flame" size={14}/> : <LucideIcon name="moon" size={14}/>}
+          </button>
+          <a
+            href="#"
+            className={`group relative hidden sm:inline-flex items-center gap-2 px-4 py-2 border border-ink hover:bg-ink hover:text-paper transition-colors ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.22em] uppercase'}`}
+          >
+            <Cross size={10}/>
+            {t.nav.login}
+          </a>
+        </div>
       </div>
     </nav>
   );
