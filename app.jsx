@@ -7,6 +7,7 @@ function HomeView({ t, lang }) {
       <Features t={t} lang={lang}/>
       <Pricing t={t} lang={lang}/>
       <Testimonials t={t} lang={lang}/>
+      <Faq t={t} lang={lang}/>
     </>
   );
 }

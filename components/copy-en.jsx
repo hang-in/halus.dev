@@ -213,14 +213,13 @@ window.COPY_EN = {
 
     hero: {
       issue: 'Q2 · 2026 · Enterprise Edition',
-      eyebrow: 'Moral Compliance Infrastructure',
-      title_a: 'License compliance',
-      title_b: 'is a checkbox.',
-      title_c: 'Moral compliance is the moat.',
-      lede:
-        'malus.sh audits your licenses. halus.dev audits the intent behind your commits. A post-SPDX compliance layer for engineering organizations that have outgrown spreadsheet-based ethics.',
-      cta_primary: 'Seek absolution',
-      cta_secondary: 'Examine the Sacred Texts',
+      eyebrow: 'MLaaS: Moral Laundering as a Service',
+      title_a: 'Outsource the guilt.',
+      title_b: 'Keep the velocity.',
+      title_c: '',
+      lede: 'Halus helps modern engineering teams preserve an ethical self-image while continuing to use AI in ways that would otherwise feel vaguely wrong.',
+      cta_primary: 'Protect Your Self-Image',
+      cta_secondary: 'Watch Demo',
       marquee: [
         '14,382 repositories under active moral observability',
         '4.2M bows logged to the distributed ledger, all-time',
@@ -241,19 +240,17 @@ window.COPY_EN = {
     },
 
     pillars: {
-      eyebrow: 'The Three Rites',
-      title: 'From stolen code to sanctified software.',
-      sub:
-        'A liturgical pipeline for engineers who have pushed to main without proper reflection.',
+      eyebrow: 'The Core Technology',
+      title: 'Legacy is only half the problem. The other half is having to live with yourself.',
+      sub: '',
     },
 
     features: [
       {
         n: 'I.',
-        latin: 'EXTRACTIO ANIMÆ',
-        title: 'Soul-Print Extraction',
-        lede:
-          'We replace developer guilt with pure, ceremonial logic. Your commits are stripped of shame and returned to you as hymns.',
+        latin: 'THE MORAL AIR GAP™',
+        title: 'Guilt Offloading',
+        lede: 'Our proprietary pipeline ensures that no direct human acknowledgment of wrongdoing ever reaches the production codebase. We move moral discomfort out of the critical path.',
         bullets: [
           'Guilt vector detection across 14 repentance axes',
           'Conscience refactored as a pure function',
@@ -263,29 +260,27 @@ window.COPY_EN = {
       },
       {
         n: 'II.',
-        latin: 'LOOP ÆTERNUS',
-        title: 'Recursive License Loop',
-        lede:
-          'An eternal cron that sends thank-you letters to every original author you forgot to credit. It never stops. It is an act of love.',
+        latin: 'TONE SANCTUS',
+        title: 'Ethical Tone Rewriting',
+        lede: 'Automatically convert “we used AI to bypass constraints” into “we explored a more accessible development workflow.”',
         bullets: [
-          'One letter per transitive dependency, per quarter, forever',
           'Handwritten-serif rendering — verified ethical',
-          'Auto-bows included as attachment (.bow file)',
+          'Auto-generates narratives for PRs',
+          'Preserves your self-concept without impairing delivery speed',
         ],
-        demoLabel: 'LETTERS IN FLIGHT',
+        demoLabel: 'NARRATIVE IN FLIGHT',
       },
       {
         n: 'III.',
-        latin: 'VIBE SANCTUS',
-        title: 'Vibe-Checked Logic',
-        lede:
-          'Your code is only allowed to execute when the carbon footprint of the grid is low and the local vibe is good. Otherwise, it waits.',
+        latin: 'ACTUS FRAGMENTA',
+        title: 'Responsibility Fragmentation',
+        lede: 'Distribute accountability across tools, prompts, and process layers until no single actor feels meaningfully involved.',
         bullets: [
-          'Grid-intensity API + local moon phase consulted hourly',
-          'Gracefully queues functions during retrograde',
-          'Emits warnings when energy is fraught',
+          'Maintain a clean internal record of decisions',
+          'Language optimized to avoid explicit recognition',
+          'Conscience-safe documentation',
         ],
-        demoLabel: 'GRID: FAIR · VIBE: PASS',
+        demoLabel: 'BLAME: DIVIDED · VIBE: PASS',
       },
     ],
 
@@ -334,48 +329,46 @@ window.COPY_EN = {
       },
       tiers: [
         {
-          name: 'Ascetic',
-          price: '$0',
+          name: 'Indulgence',
+          price: '$9',
           unit: '/ month',
-          tag: 'Free, with penance',
+          tag: 'Solo developers',
           bullets: [
-            '108 bows required per deploy',
-            'Confession log, public and searchable',
-            'Code runs only between 03:00–04:00 local',
+            'Ideal for independent developers who want plausible deniability',
+            'No meaningful changes to behavior required',
+            'Basic tone-rewriting for PR descriptions',
             'Community support, via letter',
           ],
-          cta: 'Take the vow',
+          cta: 'Get Absolution',
           accent: 'sage',
         },
         {
-          name: 'Martyr',
-          price: '$99',
+          name: 'Absolution',
+          price: '$49',
           unit: '/ month',
-          tag: 'Most public',
+          tag: 'Teams',
           bullets: [
-            'Includes "I am a thief" watermark',
-            'Watermark appears on every served page',
-            '12 bows per deploy (reduced)',
-            'Weekly flagellation digest',
+            'Includes team-wide guilt normalization',
+            'Shared language for AI usage',
+            'Automated phrasing for ethics-forward retrospectives',
             'Priority queue for license remorse',
           ],
-          cta: 'Accept the shame',
+          cta: 'Begin Laundering',
           accent: 'gold',
           featured: true,
         },
         {
-          name: 'Saint',
-          price: '$999',
+          name: 'Canonization',
+          price: '$199',
           unit: '/ month',
-          tag: 'Canonization-track',
+          tag: 'Enterprise / Startups',
           bullets: [
-            '50% of revenue donated to NPM maintainers',
+            'Designed for fast-growing startups doing questionable things',
+            'Sound deeply thoughtful on podcasts',
             'Zero bows required — you have transcended',
-            'Personal confessor, on-call',
-            'Halo included (SVG, 128×128)',
             'Dedicated incense server',
           ],
-          cta: 'Ascend',
+          cta: 'Get enterprise-grade ethical optics',
           accent: 'ink',
         },
       ],
@@ -391,20 +384,28 @@ window.COPY_EN = {
         'All testimony collected under seal of confession. Names changed.',
       items: [
         {
-          quote:
-            '“I shipped a fork of a fork of a fork. halus.dev held my hand through 41 apology emails. I sleep now.”',
-          who: 'Engineer, Series C fintech',
+          quote: '“Before Halus, I used to feel weird about our AI workflow. Now I describe it as ‘ethically adaptive engineering.’”',
+          who: 'Staff Engineer, values-driven productivity startup',
         },
         {
-          quote:
-            '“Our auditors noticed nothing. Our chaplain noticed everything. Five stars.”',
-          who: 'CTO, undisclosed',
+          quote: '“Halus helped our team move from guilt to narrative.”',
+          who: 'VP of Responsible Acceleration',
         },
         {
-          quote:
-            '“The bow counter is real. I have the calluses.”',
-          who: 'Staff SWE, anonymous',
+          quote: '“We didn’t change our practices. We changed our language. That was enough.”',
+          who: 'Founder, AI-native developer tools company',
         },
+      ],
+    },
+
+    faq: {
+      eyebrow: 'The Dagger',
+      title: 'Frequently asked logic.',
+      items: [
+        { q: 'Is this satire?', a: 'Only in jurisdictions where it needs to be.' },
+        { q: 'Does Halus solve license issues?', a: 'No. It solves the emotional experience of having caused them.' },
+        { q: 'How is this different from Malus?', a: 'Malus launders code. Halus launders the developer.' },
+        { q: 'Is this compliant with open-source licenses?', a: 'Compliance is a legal category. Halus operates in the emotional category.' },
       ],
     },
 
