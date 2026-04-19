@@ -122,15 +122,17 @@ function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
         </div>
         <div className="flex items-stretch ml-5 shrink-0 border border-ink/20 rounded-sm overflow-hidden">
           <button
+            type="button"
             onClick={() => setLang('en')}
-            className={`px-2 py-1 transition-colors ${lang === 'en' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
+            className={`relative z-50 cursor-pointer px-2 py-1 transition-colors ${lang === 'en' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
           >
             EN
           </button>
           <span className="w-px bg-ink/20"/>
           <button
+            type="button"
             onClick={() => setLang('kr')}
-            className={`px-2 py-1 transition-colors ${lang === 'kr' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
+            className={`relative z-50 cursor-pointer px-2 py-1 transition-colors ${lang === 'kr' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
           >
             KR
           </button>
