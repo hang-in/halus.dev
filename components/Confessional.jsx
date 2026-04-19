@@ -77,9 +77,9 @@ function ConfessionalView({ t, lang }) {
 function TestimonyCard({ item, C, isKr, idx }) {
   const flip = idx % 2 === 1;
   return (
-    <article className="grid grid-cols-12 gap-0 border border-ink bg-paper">
+    <article className="grid grid-cols-1 md:grid-cols-12 gap-0 border border-ink bg-paper">
       {/* Before — malus */}
-      <div className={`col-span-12 md:col-span-5 p-8 bg-parch/60 border-r border-ink relative ${flip ? 'md:order-2' : ''}`}>
+      <div className={`md:col-span-5 p-8 bg-parch/60 border-r border-ink relative ${flip ? 'md:order-2' : ''}`}>
         <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-ash flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full border border-ink"/>
           {isKr ? 'malus 시절' : 'Before · on malus'}
@@ -90,7 +90,7 @@ function TestimonyCard({ item, C, isKr, idx }) {
       </div>
 
       {/* After — halus */}
-      <div className={`col-span-12 md:col-span-7 p-8 relative ${flip ? 'md:order-1' : ''}`}>
+      <div className={`md:col-span-7 p-8 relative ${flip ? 'md:order-1' : ''}`}>
         <div className="absolute inset-2 border border-gold/25 pointer-events-none"/>
         <div className="relative">
           <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold flex items-center gap-2 mb-4">

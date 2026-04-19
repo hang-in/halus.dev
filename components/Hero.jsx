@@ -133,8 +133,8 @@ function Hero({ t, lang }) {
           </span>
         </div>
 
-        <div className="grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 lg:col-span-9">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-9">
             <h1 className={`text-ink ${isKr ? 'font-kr font-light' : 'font-serif'}`}>
               <span className={`block leading-[0.95] tracking-[-0.025em] ${isKr ? 'text-[clamp(2.25rem,5.5vw,5.25rem)]' : 'text-[clamp(2.5rem,6.5vw,6.75rem)]'}`}>
                 {t.hero.title_a}
@@ -170,8 +170,8 @@ function Hero({ t, lang }) {
         <div className="rule mt-10"/>
 
         {/* Lede + CTAs + operating metrics dashboard */}
-        <div className="grid grid-cols-12 gap-10 mt-10">
-          <div className="col-span-12 lg:col-span-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-10">
+          <div className="lg:col-span-6">
             <p className={`${isKr ? 'font-kr text-lg leading-[1.85]' : 'font-serif text-[22px] leading-[1.5]'} text-ink/85 max-w-xl`}>
               {t.hero.lede}
             </p>
@@ -209,7 +209,7 @@ function Hero({ t, lang }) {
           </div>
 
           {/* ── Analytics-dashboard ledger ─────────────────────────── */}
-          <aside className="col-span-12 lg:col-span-6">
+          <aside className="lg:col-span-6">
             <div className="border border-ink/25 bg-paper/70">
               {/* Dashboard chrome */}
               <div className="flex items-center justify-between px-4 py-2.5 border-b border-ink/15 bg-ink/[0.03]">

@@ -35,9 +35,9 @@ function GospelView({ t, lang }) {
       />
 
       <section className="border-b border-ink">
-        <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-12 gap-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 lg:grid-cols-12 gap-10">
           {/* Sidebar */}
-          <aside className="col-span-12 lg:col-span-3">
+          <aside className="lg:col-span-3">
             <div className="lg:sticky lg:top-24">
               <div className="border border-ink bg-paper">
                 <div className={`px-4 py-3 bg-ink text-paper flex items-center justify-between ${isKr ? 'font-kr text-xs' : 'font-mono text-[10px] tracking-[0.28em] uppercase'}`}>
@@ -72,7 +72,7 @@ function GospelView({ t, lang }) {
           </aside>
 
           {/* Main content */}
-          <article className="col-span-12 lg:col-span-9 min-w-0">
+          <article className="lg:col-span-9 min-w-0">
             <GospelContent section={G.sections[active === 'rules' ? 'linter' : active]} sectionKey={active} G={G} isKr={isKr}/>
           </article>
         </div>
@@ -121,17 +121,20 @@ function GospelContent({ section, sectionKey, G, isKr }) {
           <div className={`text-ash mb-3 ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
             {isKr ? '선정된 규칙 (전체 보기)' : 'Selected rules (full catalog)'}
           </div>
-          <div className="border border-ink">
-            <div className={`grid grid-cols-12 gap-3 px-4 py-2.5 bg-ink text-paper font-mono text-[10px] tracking-[0.28em] uppercase`}>
+          <div className="border border-ink overflow-x-auto">
+            <div className={`hidden md:grid grid-cols-12 gap-3 px-4 py-2.5 bg-ink text-paper font-mono text-[10px] tracking-[0.28em] uppercase min-w-[600px]`}>
               <span className="col-span-2">{isKr ? '번호' : 'id'}</span>
               <span className="col-span-1">{isKr ? '등급' : 'grade'}</span>
               <span className="col-span-3">{isKr ? '이름' : 'name'}</span>
               <span className="col-span-6">{isKr ? '설명' : 'description'}</span>
             </div>
             {section.rules.map((r, i) => (
-              <div key={r.id} className={`grid grid-cols-12 gap-3 px-4 py-3 items-start ${i ? 'border-t border-ink/15' : ''}`}>
-                <span className="col-span-2 font-mono text-[11px] text-ink">{r.id}</span>
-                <span className="col-span-1">
+              <div key={r.id} className={`flex flex-col md:grid md:grid-cols-12 gap-2 md:gap-3 px-4 py-4 md:py-3 items-start md:min-w-[600px] ${i ? 'border-t border-ink/15' : ''}`}>
+                <div className="md:col-span-2 flex items-center justify-between w-full md:w-auto">
+                  <span className="font-mono text-[11px] text-ink">{r.id}</span>
+                  <span className="md:hidden inline-flex items-center justify-center w-7 h-6 border font-mono text-[10px] border-ink/40 text-ash">{r.grade}</span>
+                </div>
+                <span className="hidden md:flex md:col-span-1">
                   <span className={`inline-flex items-center justify-center w-7 h-6 border font-mono text-[10px] ${
                     r.grade === 'V' ? 'bg-ink text-paper border-ink' :
                     r.grade === 'IV' ? 'border-gold text-gold' :
@@ -139,8 +142,8 @@ function GospelContent({ section, sectionKey, G, isKr }) {
                     'border-ink/40 text-ash'
                   }`}>{r.grade}</span>
                 </span>
-                <span className="col-span-3 font-mono text-[12px] text-gold break-all">{r.name}</span>
-                <span className={`col-span-6 text-ink/80 ${isKr ? 'font-kr text-[14px] leading-[1.75]' : 'font-serif text-[17px] leading-[1.45]'}`}>{r.desc}</span>
+                <span className="md:col-span-3 font-mono text-[12px] text-gold break-all">{r.name}</span>
+                <span className={`md:col-span-6 text-ink/80 ${isKr ? 'font-kr text-[14px] leading-[1.75]' : 'font-serif text-[17px] leading-[1.45]'}`}>{r.desc}</span>
               </div>
             ))}
           </div>

@@ -20,8 +20,8 @@ function Footer({ t, lang, setView }) {
     <footer className="bg-ink text-paper">
       {/* Savings / $32.80 story */}
       <div className="border-b border-paper/15 bg-[#0f0e0a]">
-        <div className="max-w-[1400px] mx-auto px-6 py-14 grid grid-cols-12 gap-8 items-center">
-          <div className="col-span-12 lg:col-span-3">
+        <div className="max-w-[1400px] mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-3">
             <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-goldlt flex items-center gap-2 mb-3">
               <Cross size={10}/> {isKr ? '투명성' : 'Transparency'}
             </div>
@@ -29,7 +29,7 @@ function Footer({ t, lang, setView }) {
               {F.savingsHeadline}
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-7">
+          <div className="lg:col-span-7">
             <p className={`${isKr ? 'font-kr text-base leading-[1.85]' : 'font-serif italic text-xl leading-[1.5]'} text-paper/80`}>
               {F.savingsBody}
             </p>
@@ -43,7 +43,7 @@ function Footer({ t, lang, setView }) {
               </span>
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-2 flex lg:justify-end">
+          <div className="lg:col-span-2 flex lg:justify-end">
             <a className={`inline-flex items-center gap-2 px-4 py-3 border border-goldlt text-goldlt hover:bg-goldlt hover:text-ink transition-colors ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.28em] uppercase'}`}>
               {F.savingsLink}
             </a>
@@ -53,13 +53,13 @@ function Footer({ t, lang, setView }) {
 
       {/* Scripture band */}
       <div className="border-b border-paper/15">
-        <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-12 gap-8 items-start">
-          <div className="col-span-12 lg:col-span-2">
+        <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          <div className="lg:col-span-2">
             <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-goldlt flex items-center gap-2">
               <Cross size={10}/> {F.scriptureLabel}
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-10">
+          <div className="lg:col-span-10">
             <p className={`${isKr ? 'font-kr font-light text-2xl leading-[1.7]' : 'font-serif italic text-3xl md:text-4xl leading-[1.25]'} text-paper`}>
               {F.verse}
             </p>
@@ -68,8 +68,8 @@ function Footer({ t, lang, setView }) {
       </div>
 
       {/* Link grid */}
-      <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-12 gap-8">
-        <div className="col-span-12 lg:col-span-4">
+      <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-2 lg:grid-cols-12 gap-8">
+        <div className="col-span-2 lg:col-span-4">
           <div className="flex items-center gap-3">
             <span className="relative inline-flex items-center justify-center w-11 h-11 border border-paper">
               <span className="absolute inset-[3px] border border-goldlt"/>
@@ -101,7 +101,7 @@ function Footer({ t, lang, setView }) {
         </div>
 
         {Object.entries(F.links).map(([key, links]) => (
-          <div key={key} className="col-span-6 lg:col-span-2">
+          <div key={key} className="col-span-1 lg:col-span-2">
             <div className={`text-goldlt mb-4 ${isKr ? 'font-kr text-[11px] tracking-[0.2em]' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
               {key}
             </div>

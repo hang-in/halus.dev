@@ -254,8 +254,8 @@ function FeatureRow({ feat, idx, isKr, t }) {
   const Demo = demos[idx] || SoulExtractionDemo;
 
   return (
-    <article className="grid grid-cols-12 gap-8 py-20 border-b border-ink/20 last:border-b-0">
-      <div className={`col-span-12 lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
+    <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-20 border-b border-ink/20 last:border-b-0">
+      <div className={`lg:col-span-7 ${flip ? 'lg:order-2' : ''}`}>
         <div className="flex items-baseline gap-5 mb-5">
           <span className="font-serif italic text-gold text-5xl leading-none">{feat.n}</span>
           <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-ash">{feat.latin}</span>
@@ -284,7 +284,7 @@ function FeatureRow({ feat, idx, isKr, t }) {
         </div>
       </div>
 
-      <div className={`col-span-12 lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
+      <div className={`lg:col-span-5 ${flip ? 'lg:order-1' : ''}`}>
         <div className="sticky top-6">
           <div className={`mb-3 flex items-center justify-between text-ash ${isKr ? 'font-kr text-xs' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
             <span>{isKr ? '실시간' : 'live'}</span>
@@ -307,8 +307,8 @@ function Features({ t, lang }) {
   return (
     <section id="rites" className="border-b border-ink">
       <div className="max-w-[1400px] mx-auto px-6 pt-24 pb-10">
-        <div className="grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 lg:col-span-7">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+          <div className="lg:col-span-7">
             <div className={`text-gold mb-5 flex items-center gap-3 ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
               <Cross size={10}/> {t.pillars.eyebrow}
             </div>
@@ -320,7 +320,7 @@ function Features({ t, lang }) {
               )}
             </h2>
           </div>
-          <div className="col-span-12 lg:col-span-5 lg:pl-12 lg:border-l lg:border-ink/20">
+          <div className="lg:col-span-5 lg:pl-12 lg:border-l lg:border-ink/20">
             <p className={`text-ash ${isKr ? 'font-kr text-lg leading-[1.85]' : 'font-serif italic text-2xl leading-[1.4]'}`}>
               {t.pillars.sub}
             </p>

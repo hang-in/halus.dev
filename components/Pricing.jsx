@@ -128,8 +128,8 @@ function WatermarkStrip({ isKr }) {
   return (
     <div className="mt-16 border border-ink bg-paper relative overflow-hidden">
       <div className="absolute inset-0 watermark-scan pointer-events-none"/>
-      <div className="grid grid-cols-12 items-stretch relative">
-        <div className="col-span-12 md:col-span-5 p-6 border-b md:border-b-0 md:border-r border-ink">
+      <div className="grid grid-cols-1 md:grid-cols-12 items-stretch relative">
+        <div className="md:col-span-5 p-6 border-b md:border-b-0 md:border-r border-ink">
           <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold mb-3">
             {isKr ? '워터마크 미리보기' : 'Watermark preview'}
           </div>
@@ -139,7 +139,7 @@ function WatermarkStrip({ isKr }) {
               : 'The Martyr tier auto-injects an "I am a thief" watermark at the foot of every served page. Shame is a feature.'}
           </p>
         </div>
-        <div className="col-span-12 md:col-span-7 p-6 font-mono text-[11px] relative">
+        <div className="md:col-span-7 p-6 font-mono text-[11px] relative break-words">
           <div className="text-ash tracking-[0.2em] uppercase mb-2">$ curl -I halus.example.com</div>
           <div className="text-ink/80 leading-relaxed">
             <div><span className="text-gold">X-Halus-Status:</span> sanctified</div>

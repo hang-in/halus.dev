@@ -38,7 +38,7 @@ function ScriptureView({ t, lang }) {
         <div className="max-w-[1400px] mx-auto px-6 py-16">
           <ScriptureFeatured art={S.articles[0]} S={S} isKr={isKr} onOpen={() => setOpenIdx(0)}/>
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 border-t border-ink/15 pt-16">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 border-t border-ink/15 pt-16">
             {S.articles.slice(1).map((a, i) => (
               <ScriptureCard key={i} art={a} S={S} isKr={isKr} onOpen={() => setOpenIdx(i + 1)}/>
             ))}
@@ -51,8 +51,8 @@ function ScriptureView({ t, lang }) {
 
 function ScriptureFeatured({ art, S, isKr, onOpen }) {
   return (
-    <article className="grid grid-cols-12 gap-10 items-stretch">
-      <div className="col-span-12 lg:col-span-5">
+    <article className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+      <div className="lg:col-span-5">
         <div className="relative aspect-[4/5] border border-ink bg-parch overflow-hidden">
           <div className="absolute inset-0" style={{
             backgroundImage: `repeating-linear-gradient(135deg, rgba(10,10,10,0.12) 0 1px, transparent 1px 5px), repeating-linear-gradient(45deg, rgba(10,10,10,0.08) 0 1px, transparent 1px 7px)`
@@ -68,7 +68,7 @@ function ScriptureFeatured({ art, S, isKr, onOpen }) {
         </div>
       </div>
 
-      <div className="col-span-12 lg:col-span-7 flex flex-col justify-center">
+      <div className="lg:col-span-7 flex flex-col justify-center">
         <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold flex items-center gap-3">
           <span>{S.latest}</span>
           <span className="w-8 h-px bg-gold"/>

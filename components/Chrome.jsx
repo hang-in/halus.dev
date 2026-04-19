@@ -103,6 +103,22 @@ function Nav({ t, lang, view, setView, theme, setTheme }) {
           </a>
         </div>
       </div>
+      {/* Mobile nav strip */}
+      <div className={`md:hidden border-t border-ink/10 px-6 py-2.5 flex items-center gap-6 overflow-x-auto whitespace-nowrap ${isKr ? 'font-kr text-xs' : 'font-mono text-[9px] tracking-[0.2em] uppercase'}`}>
+        {routes.map((r) => {
+          const active = view === r.k;
+          return (
+            <a
+              key={`m-${r.k}`}
+              href={`#/${r.k}`}
+              onClick={onGo(r.k)}
+              className={`transition-colors ${active ? 'text-gold' : 'text-ink/60 hover:text-ink'}`}
+            >
+              {r.label}
+            </a>
+          );
+        })}
+      </div>
     </nav>
   );
 }
@@ -111,8 +127,8 @@ function Nav({ t, lang, view, setView, theme, setTheme }) {
 function PageHeader({ eyebrow, title, sub, isKr, meta }) {
   return (
     <section className="parch-grain border-b border-ink">
-      <div className="max-w-[1400px] mx-auto px-6 py-20 grid grid-cols-12 gap-8 items-end">
-        <div className="col-span-12 lg:col-span-8">
+      <div className="max-w-[1400px] mx-auto px-6 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div className="lg:col-span-8">
           <div className={`text-gold mb-5 flex items-center gap-3 ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
             <Cross size={10}/> {eyebrow}
           </div>
@@ -126,7 +142,7 @@ function PageHeader({ eyebrow, title, sub, isKr, meta }) {
           )}
         </div>
         {meta && (
-          <div className="col-span-12 lg:col-span-4 lg:pl-8 lg:border-l lg:border-ink/20">
+          <div className="lg:col-span-4 lg:pl-8 lg:border-l lg:border-ink/20">
             {meta}
           </div>
         )}
