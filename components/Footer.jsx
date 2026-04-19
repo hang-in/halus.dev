@@ -17,7 +17,7 @@ function Footer({ t, lang, setView }) {
   };
 
   return (
-    <footer className="bg-ink text-paper">
+    <footer className="bg-[var(--c-footer-bg)] text-[var(--c-footer-text)]">
       {/* Savings / $32.80 story */}
       <div className="border-b border-paper/15 bg-[#0f0e0a]">
         <div className="max-w-[1400px] mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
