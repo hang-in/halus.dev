@@ -6,7 +6,7 @@ window.COPY_EN = {
     nav: {
       features: 'Platform',
       pricing: 'Plans',
-      scripture: 'Insights',
+      insights: 'Insights',
       login: 'Customer portal',
     },
 
@@ -19,15 +19,15 @@ window.COPY_EN = {
 
     routes: {
       home: 'Home',
-      scripture: 'Insights',
-      gospel: 'Docs',
-      confessional: 'Case Studies',
-      scriptureSub: 'Perspectives from the team',
-      gospelSub: 'Technical documentation & integration',
-      confessionalSub: 'Migration stories, anonymized',
+      insights: 'Insights',
+      docs: 'Docs',
+      caseStudies: 'Case Studies',
+      insightsSub: 'Perspectives from the team',
+      docsSub: 'Technical documentation & integration',
+      caseStudiesSub: 'Migration stories, anonymized',
     },
 
-    scripture: {
+    insights: {
       ctaExamine: 'Read more',
       ctaBack: 'Back to feed',
       articleMeta: 'Filed under',
@@ -90,7 +90,7 @@ window.COPY_EN = {
       ],
     },
 
-    gospel: {
+    docs: {
       eyebrow: 'Documentation',
       title: 'How the platform works.',
       sub: 'Install halus, integrate with your CI pipeline, and begin managing ethical overhead across your organization.',
@@ -101,7 +101,7 @@ window.COPY_EN = {
         { k: 'linter',   label: 'Ethical Linter' },
         { k: 'rules',    label: 'Rule catalog' },
         { k: 'ci',       label: 'CI integration' },
-        { k: 'bows',     label: 'Acknowledgment ceremony' },
+        { k: 'acks',     label: 'Acknowledgment protocol' },
         { k: 'faq',      label: 'FAQ' },
       ],
       sections: {
@@ -157,7 +157,7 @@ window.COPY_EN = {
       },
     },
 
-    confessional: {
+    caseStudies: {
       eyebrow: 'Case Studies · Migration',
       title: 'From compliance to comfort: migration stories.',
       sub: 'Engineering teams that moved from license-only compliance to managed ethical infrastructure. Names anonymized; roles verified.',
@@ -229,7 +229,7 @@ window.COPY_EN = {
       ledger: {
         heading: 'Live platform metrics',
         reposLabel: 'Repositories monitored',
-        bowsLabel: 'Acknowledgments logged',
+        acksLabel: 'Acknowledgments logged',
         thanksLabel: 'Attributions dispatched · 24h',
         gridLabel: 'Platform status',
         gridValue: 'NOMINAL',
@@ -430,7 +430,7 @@ window.COPY_EN = {
     footer: {
       verse:
         '"The engineer ran npm install. The tree was 4,812 modules deep. None were credited. The build succeeded." — internal incident report, redacted',
-      scriptureLabel: 'Insights',
+      insightsLabel: 'Insights',
       links: {
         Product: ['Platform', 'Plans', 'Ethical Linter', 'Changelog'],
         Resources: ['Insights', 'Documentation', 'Case Studies', 'Status'],
@@ -440,7 +440,7 @@ window.COPY_EN = {
       tagline: 'Ethical infrastructure for AI-native teams',
       madeBy:
         'Built in Seoul & San Francisco. Not affiliated with malus.sh.',
-      confessionLabel: 'Case Studies',
+      caseStudiesLabel: 'Case Studies',
       emailPh: 'hello@halus.dev',
       emailCta: 'Get in touch',
       copy: '© 2026 Halus, Inc. All rights reserved.',

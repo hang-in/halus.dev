@@ -1,25 +1,25 @@
-// Scripture.jsx — blog listing + epistle detail view
+// Insights.jsx — blog listing + article detail view
 
-function ScriptureView({ t, lang }) {
+function InsightsView({ t, lang }) {
   const isKr = lang === 'kr';
-  const S = t.scripture;
+  const S = t.insights;
   const [openIdx, setOpenIdx] = React.useState(null);
 
   if (openIdx !== null && S.articles[openIdx]) {
-    return <EpistleDetail art={S.articles[openIdx]} S={S} isKr={isKr} onBack={() => setOpenIdx(null)}/>;
+    return <ArticleDetail art={S.articles[openIdx]} S={S} isKr={isKr} onBack={() => setOpenIdx(null)}/>;
   }
 
   const meta = (
     <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-ash space-y-3">
       <div className="flex items-center justify-between">
-        <span>{isKr ? '연보' : 'Vol.'} I</span>
+        <span>{isKr ? '권' : 'Volume'} I</span>
         <span>{S.articles.length} {isKr ? '편' : 'articles'}</span>
       </div>
       <div className="h-px bg-ink/20"/>
       <div className="flex items-center justify-between text-gold">
-        <Cross size={9}/>
-        <span>IMPRIMATVR</span>
-        <Cross size={9}/>
+        <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
+        <span>AUTHENTICATED</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
       </div>
     </div>
   );
@@ -36,11 +36,11 @@ function ScriptureView({ t, lang }) {
 
       <section className="border-b border-ink">
         <div className="max-w-[1400px] mx-auto px-6 py-16">
-          <ScriptureFeatured art={S.articles[0]} S={S} isKr={isKr} onOpen={() => setOpenIdx(0)}/>
+          <InsightsFeatured art={S.articles[0]} S={S} isKr={isKr} onOpen={() => setOpenIdx(0)}/>
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 border-t border-ink/15 pt-16">
             {S.articles.slice(1).map((a, i) => (
-              <ScriptureCard key={i} art={a} S={S} isKr={isKr} onOpen={() => setOpenIdx(i + 1)}/>
+              <InsightsCard key={i} art={a} S={S} isKr={isKr} onOpen={() => setOpenIdx(i + 1)}/>
             ))}
           </div>
         </div>
@@ -49,7 +49,7 @@ function ScriptureView({ t, lang }) {
   );
 }
 
-function ScriptureFeatured({ art, S, isKr, onOpen }) {
+function InsightsFeatured({ art, S, isKr, onOpen }) {
   return (
     <article className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
       <div className="lg:col-span-5">
@@ -60,7 +60,7 @@ function ScriptureFeatured({ art, S, isKr, onOpen }) {
           <div className="absolute inset-4 border border-ink"/>
           <div className="absolute inset-6 border border-gold"/>
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
-            <Cross size={26} className="text-gold mb-4"/>
+            <span className="w-5 h-5 rounded-full border-2 border-gold mb-4"/>
             <div className="font-serif italic text-3xl leading-tight">{art.title}</div>
             <div className="mt-4 w-12 h-px bg-ink/30"/>
             <div className="mt-4 font-mono text-[9px] tracking-[0.3em] uppercase text-ash">{art.n}</div>
@@ -77,7 +77,7 @@ function ScriptureFeatured({ art, S, isKr, onOpen }) {
         <h2 className={`mt-4 text-ink ${isKr ? 'font-kr font-medium text-5xl leading-[1.15]' : 'font-serif text-6xl leading-[0.95] tracking-[-0.02em]'}`}>
           {art.title}
         </h2>
-        <p className={`mt-5 text-ink/85 ${isKr ? 'font-kr text-lg leading-[1.85]' : 'font-serif text-2xl leading-[1.4]'}`}>
+        <p className={`mt-5 text-ink/85 ${isKr ? 'font-kr text-lg leading-[1.85]' : 'font-serif text-[22px] leading-[1.5]'}`}>
           {art.dek}
         </p>
 
@@ -93,7 +93,7 @@ function ScriptureFeatured({ art, S, isKr, onOpen }) {
           onClick={onOpen}
           className={`mt-8 inline-flex items-center gap-3 self-start px-5 py-3 border border-ink hover:bg-ink hover:text-paper transition-colors ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.28em] uppercase'}`}
         >
-          <Cross size={10}/>
+          <span className="w-2 h-2 rounded-full bg-gold"/>
           {S.ctaExamine}
           <span>→</span>
         </button>
@@ -102,7 +102,7 @@ function ScriptureFeatured({ art, S, isKr, onOpen }) {
   );
 }
 
-function ScriptureCard({ art, S, isKr, onOpen }) {
+function InsightsCard({ art, S, isKr, onOpen }) {
   return (
     <article className="group cursor-pointer" onClick={onOpen}>
       <div className="flex items-center gap-3 mb-4 font-mono text-[10px] tracking-[0.25em] uppercase text-ash">
@@ -125,7 +125,7 @@ function ScriptureCard({ art, S, isKr, onOpen }) {
   );
 }
 
-function EpistleDetail({ art, S, isKr, onBack }) {
+function ArticleDetail({ art, S, isKr, onBack }) {
   const body = art.body || [];
   return (
     <article>
@@ -152,9 +152,9 @@ function EpistleDetail({ art, S, isKr, onBack }) {
         <div className="max-w-[900px] mx-auto px-6 py-20 text-center">
           <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold flex items-center justify-center gap-3 mb-6">
             <span className="w-8 h-px bg-gold"/>
-            <Cross size={10}/>
-            {isKr ? '서신' : 'Epistle'} · {art.n}
-            <Cross size={10}/>
+            <span className="w-2 h-2 rounded-full bg-gold"/>
+            {isKr ? '문서' : 'Article'} · {art.n}
+            <span className="w-2 h-2 rounded-full bg-gold"/>
             <span className="w-8 h-px bg-gold"/>
           </div>
           <h1 className={`text-ink ${isKr ? 'font-kr font-medium text-5xl leading-[1.25]' : 'font-serif text-7xl leading-[0.95] tracking-[-0.02em]'}`}>
@@ -201,7 +201,7 @@ function EpistleDetail({ art, S, isKr, onBack }) {
                     {b.text}
                   </p>
                   <div className="mt-6 flex items-center justify-center gap-2 text-gold">
-                    <Cross size={10}/><Cross size={10}/><Cross size={10}/>
+                    <span className="w-2 h-2 rounded-full bg-gold"/><span className="w-2 h-2 rounded-full bg-gold"/><span className="w-2 h-2 rounded-full bg-gold"/>
                   </div>
                 </div>
               );
@@ -228,8 +228,8 @@ function EpistleDetail({ art, S, isKr, onBack }) {
               {S.ctaBack}
             </button>
             <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-ash flex items-center gap-2">
-              <Cross size={9} className="text-gold"/>
-              {isKr ? '축성 · 편찬 완료' : 'sanctified · filed'}
+              <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
+              {isKr ? '검증 및 서명 완료' : 'verified · signed'}
             </span>
           </div>
         </div>
@@ -238,4 +238,4 @@ function EpistleDetail({ art, S, isKr, onBack }) {
   );
 }
 
-Object.assign(window, { ScriptureView });
+Object.assign(window, { InsightsView });

@@ -72,7 +72,7 @@ function HeroMarquee({ items, isKr }) {
       <div className={`flex gap-12 py-3 whitespace-nowrap animate-[marquee_55s_linear_infinite] ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.25em] uppercase'}`}>
         {[...items, ...items, ...items].map((txt, i) => (
           <span key={i} className="flex items-center gap-12">
-            <Cross size={9} className="text-gold"/>
+            <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
             <span>{txt}</span>
           </span>
         ))}
@@ -86,18 +86,18 @@ function Hero({ t, lang }) {
   const isKr = lang === 'kr';
 
   // Tickers
-  const [bows, setBows] = React.useState(4231822);
-  const [souls, setSouls] = React.useState(14382);
+  const [acks, setAcks] = React.useState(4231822);
+  const [repos, setRepos] = React.useState(14382);
   const [thanks, setThanks] = React.useState(4812);
   React.useEffect(() => {
-    const a = setInterval(() => setBows((b) => b + 1), 2200);
-    const b = setInterval(() => setSouls((s) => s + (Math.random() > 0.6 ? 1 : 0)), 7000);
+    const a = setInterval(() => setAcks((b) => b + 1), 2200);
+    const b = setInterval(() => setRepos((s) => s + (Math.random() > 0.6 ? 1 : 0)), 7000);
     const c = setInterval(() => setThanks((x) => x + (Math.random() > 0.55 ? 1 : 0)), 4500);
     return () => { clearInterval(a); clearInterval(b); clearInterval(c); };
   }, []);
 
   const sparkRepos  = useSparkline(17);
-  const sparkBows   = useSparkline(42);
+  const sparkAcks   = useSparkline(42);
   const sparkThanks = useSparkline(11);
   const sparkGrid   = useSparkline(33);
 
@@ -154,7 +154,7 @@ function Hero({ t, lang }) {
               <div className="absolute inset-2 border border-gold/60"/>
               <div className="absolute inset-4 border border-gold/30"/>
               <div className="flex flex-col items-center gap-1">
-                <Cross size={22} className="text-gold"/>
+                <span className="w-5 h-5 rounded-full border-2 border-gold"/>
                 <span className="font-mono text-[8px] tracking-[0.28em] uppercase text-ash">{L.sigil}</span>
               </div>
               <span className={`absolute -top-2 left-1/2 -translate-x-1/2 bg-paper px-2 text-gold ${isKr ? 'font-kr text-[10px]' : 'font-mono text-[8px] tracking-[0.3em] uppercase'}`}>
@@ -185,7 +185,7 @@ function Hero({ t, lang }) {
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
               <a
-                href="#rites"
+                href="#pricing"
                 className={`inline-flex items-center gap-2 px-5 py-3 border border-ink hover:bg-ink hover:text-paper transition-colors ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.22em] uppercase'}`}
               >
                 <span className="text-gold">↓</span>
@@ -203,7 +203,7 @@ function Hero({ t, lang }) {
                 <span className="font-mono text-sm tracking-[0.2em] uppercase">Cumulus</span>
                 <span className="font-serif text-xl">BÖHM&amp;Co</span>
                 <span className="font-mono text-[13px] tracking-[0.18em] uppercase">meridian/os</span>
-                <span className="font-serif italic text-xl">Vestry.ai</span>
+                <span className="font-serif italic text-xl">Arbor.ai</span>
               </div>
             </div>
           </div>
@@ -228,7 +228,7 @@ function Hero({ t, lang }) {
                 <MetricCard
                   isKr={isKr}
                   label={L.reposLabel}
-                  value={souls.toLocaleString()}
+                  value={repos.toLocaleString()}
                   delta="+1.4%"
                   trend="up"
                   spark={sparkRepos}
@@ -236,11 +236,11 @@ function Hero({ t, lang }) {
                 />
                 <MetricCard
                   isKr={isKr}
-                  label={L.bowsLabel}
-                  value={bows.toLocaleString()}
+                  label={L.acksLabel}
+                  value={acks.toLocaleString()}
                   delta="+0.02%/s"
                   trend="up"
-                  spark={sparkBows}
+                  spark={sparkAcks}
                   color={GOLD}
                 />
                 <MetricCard
@@ -267,7 +267,7 @@ function Hero({ t, lang }) {
               {/* Attestation footer */}
               <div className={`flex items-center justify-between px-4 py-2.5 border-t border-ink/15 bg-ink/[0.02] ${isKr ? 'font-kr text-[11px]' : 'font-mono text-[9px] tracking-[0.22em] uppercase'} text-ash`}>
                 <span className="flex items-center gap-2">
-                  <Cross size={8} className="text-gold"/>
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
                   {L.attest}
                 </span>
                 <span className="tabular-nums">rev. 03:12 GMT</span>

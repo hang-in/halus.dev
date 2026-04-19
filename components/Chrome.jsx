@@ -41,9 +41,9 @@ function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
   const isKr = lang === 'kr';
   const routes = [
     { k: 'home',         label: t.routes.home },
-    { k: 'scripture',    label: t.routes.scripture },
-    { k: 'gospel',       label: t.routes.gospel },
-    { k: 'confessional', label: t.routes.confessional },
+    { k: 'insights',     label: t.routes.insights },
+    { k: 'docs',         label: t.routes.docs },
+    { k: 'caseStudies',  label: t.routes.caseStudies },
   ];
 
   const onGo = (k) => (e) => { e.preventDefault(); setView(k); window.scrollTo({ top: 0, behavior: 'instant' }); };
@@ -78,7 +78,7 @@ function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
                 onClick={onGo(r.k)}
                 className={`relative py-1 transition-colors ${active ? 'text-ink' : 'text-ink/60 hover:text-ink'}`}
               >
-                {active && <span className="absolute -left-3 top-1/2 -translate-y-1/2 text-gold text-[9px]">✝</span>}
+                {active && <span className="absolute -left-3 top-1/2 -translate-y-1/2 text-gold text-[9px]">·</span>}
                 {r.label}
                 {active && <span className="absolute left-0 right-0 -bottom-[21px] h-[2px] bg-gold"/>}
               </a>
@@ -90,7 +90,7 @@ function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
           <button
             onClick={() => setTheme(theme === 'paper' ? 'crypt' : 'paper')}
             className={`p-2 border transition-colors ${theme === 'crypt' ? 'border-gold text-gold bg-ink' : 'border-ink text-ink hover:bg-parch'}`}
-            title="Toggle The Crypt"
+            title="Toggle dark mode"
           >
             {theme === 'crypt' ? <LucideIcon name="flame" size={14}/> : <LucideIcon name="moon" size={14}/>}
           </button>
@@ -98,7 +98,7 @@ function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
             href="#"
             className={`group relative hidden sm:inline-flex items-center gap-2 px-4 py-2 border border-ink hover:bg-ink hover:text-paper transition-colors ${isKr ? 'font-kr text-sm' : 'font-mono text-[11px] tracking-[0.22em] uppercase'}`}
           >
-            <Cross size={10}/>
+            <span className="w-1.5 h-1.5 rounded-full bg-ink group-hover:bg-paper transition-colors"/>
             {t.nav.login}
           </a>
         </div>
@@ -149,7 +149,7 @@ function PageHeader({ eyebrow, title, sub, isKr, meta }) {
       <div className="max-w-[1400px] mx-auto px-6 py-12 md:py-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
         <div className="lg:col-span-8">
           <div className={`text-gold mb-5 flex items-center gap-3 ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
-            <Cross size={10}/> {eyebrow}
+            <span className="w-2 h-2 rounded-full bg-gold"/> {eyebrow}
           </div>
           <h1 className={`text-ink ${isKr ? 'font-kr font-medium text-5xl leading-[1.2]' : 'font-serif text-7xl leading-[0.95] tracking-[-0.02em]'}`}>
             {title}

@@ -9,10 +9,10 @@ function Footer({ t, lang, setView }) {
   // Map footer link labels → route keys (best effort, both langs)
   const routeFor = (label) => {
     const s = label.toString();
-    if (/scripture|경전/i.test(s)) return 'scripture';
-    if (/gospel|docs|복음|문서/i.test(s)) return 'gospel';
-    if (/confessional|고해/i.test(s)) return 'confessional';
-    if (/rites|indulgences|moral linter|changelog|삼례|면죄|린터|변경록/i.test(s)) return 'home';
+    if (/insights|insight|경전|인사이트/i.test(s)) return 'insights';
+    if (/docs|복음|문서/i.test(s)) return 'docs';
+    if (/caseStudies|case.stud|고해|도입/i.test(s)) return 'caseStudies';
+    if (/platform|plans|linter|changelog|플랫폼|요금|린터|변경/i.test(s)) return 'home';
     return null;
   };
 
@@ -23,7 +23,7 @@ function Footer({ t, lang, setView }) {
         <div className="max-w-[1400px] mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-3">
             <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-goldlt flex items-center gap-2 mb-3">
-              <Cross size={10}/> {isKr ? '투명성' : 'Transparency'}
+              <span className="w-2 h-2 rounded-full bg-goldlt"/> {isKr ? '투명성' : 'Transparency'}
             </div>
             <div className={`${isKr ? 'font-kr font-medium text-2xl leading-[1.3]' : 'font-serif text-3xl leading-[1.05]'} text-paper`}>
               {F.savingsHeadline}
@@ -51,12 +51,12 @@ function Footer({ t, lang, setView }) {
         </div>
       </div>
 
-      {/* Scripture band */}
+      {/* Quote band */}
       <div className="border-b border-paper/15">
         <div className="max-w-[1400px] mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-2">
             <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-goldlt flex items-center gap-2">
-              <Cross size={10}/> {F.scriptureLabel}
+              <span className="w-2 h-2 rounded-full bg-goldlt"/> {F.insightsLabel}
             </div>
           </div>
           <div className="lg:col-span-10">
@@ -92,7 +92,7 @@ function Footer({ t, lang, setView }) {
               <span className="w-1.5 h-1.5 bg-sage"/> {isKr ? '감사 완료 2026 Q1' : 'Audit · 2026 Q1'}
             </span>
             <span className="inline-flex items-center gap-2 px-2.5 py-1 border border-paper/30 text-paper/70">
-              <Cross size={8} className="text-goldlt"/> {isKr ? '축성됨' : 'sanctified'}
+              <span className="w-1.5 h-1.5 rounded-full bg-sage"/> {isKr ? '검증 완료' : 'verified'}
             </span>
             <span className="inline-flex items-center gap-2 px-2.5 py-1 border border-paper/30 text-paper/70">
               SOC-2
@@ -129,9 +129,9 @@ function Footer({ t, lang, setView }) {
         <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-wrap items-center justify-between gap-4 font-mono text-[10px] tracking-[0.25em] uppercase text-paper/50">
           <span>{F.copy}</span>
           <span className="flex items-center gap-3">
-            <Cross size={9} className="text-goldlt"/>
-            SANCTVM · SANCTVM · SANCTVM
-            <Cross size={9} className="text-goldlt"/>
+            <span className="w-1.5 h-1.5 rounded-full bg-goldlt"/>
+            HALUS · ETHICAL · INFRASTRUCTURE
+            <span className="w-1.5 h-1.5 rounded-full bg-goldlt"/>
           </span>
           <span>halus.dev</span>
         </div>

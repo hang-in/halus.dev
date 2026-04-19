@@ -1,8 +1,8 @@
-// Gospel.jsx — docs view with sidebar
+// Docs.jsx — docs view with sidebar
 
-function GospelView({ t, lang }) {
+function DocsView({ t, lang }) {
   const isKr = lang === 'kr';
-  const G = t.gospel;
+  const G = t.docs;
   const [active, setActive] = React.useState('intro');
 
   const meta = (
@@ -16,7 +16,7 @@ function GospelView({ t, lang }) {
         <span>{isKr ? '상태' : 'status'}</span>
         <span className="flex items-center gap-2 text-sagedk">
           <span className="w-1.5 h-1.5 rounded-full bg-sage"/>
-          {isKr ? '안정 · 축성됨' : 'stable · sanctified'}
+          {isKr ? 'stable · verified' : 'stable · verified'}
         </span>
       </div>
     </div>
@@ -41,7 +41,7 @@ function GospelView({ t, lang }) {
             <div className="lg:sticky lg:top-24">
               <div className="border border-ink bg-paper">
                 <div className={`px-4 py-3 bg-ink text-paper flex items-center justify-between ${isKr ? 'font-kr text-xs' : 'font-mono text-[10px] tracking-[0.28em] uppercase'}`}>
-                  <span className="flex items-center gap-2"><Cross size={10} className="text-goldlt"/>{isKr ? '목차' : 'Contents'}</span>
+                  <span className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-goldlt"/>{isKr ? '목차' : 'Contents'}</span>
                   <span className="text-goldlt">§</span>
                 </div>
                 <ul>
@@ -65,15 +65,15 @@ function GospelView({ t, lang }) {
 
               <div className={`mt-6 p-4 border border-ink/30 bg-parch/60 ${isKr ? 'font-kr text-[13px] leading-[1.7]' : 'font-serif italic text-[15px] leading-[1.45]'} text-ink/80`}>
                 {isKr
-                  ? '의문이 있거든 고해실에 예약하소서. 면담은 무료이며 봉인 아래 이루어지나니.'
-                  : 'Questions? Book the Confessional. Consultations are free and conducted under seal.'}
+                  ? '기술적인 질문이 있으십니까? 상담을 통해 명확한 안내를 받으십시오.'
+                  : 'Technical questions? Request a consultation for precise guidance.'}
               </div>
             </div>
           </aside>
 
           {/* Main content */}
           <article className="lg:col-span-9 min-w-0">
-            <GospelContent section={G.sections[active === 'rules' ? 'linter' : active]} sectionKey={active} G={G} isKr={isKr}/>
+            <DocsContent section={G.sections[active === 'rules' ? 'linter' : active]} sectionKey={active} G={G} isKr={isKr}/>
           </article>
         </div>
       </section>
@@ -81,7 +81,7 @@ function GospelView({ t, lang }) {
   );
 }
 
-function GospelContent({ section, sectionKey, G, isKr }) {
+function DocsContent({ section, sectionKey, G, isKr }) {
   if (!section) return null;
   return (
     <div>
@@ -109,7 +109,7 @@ function GospelContent({ section, sectionKey, G, isKr }) {
               <span className="w-1.5 h-1.5 rounded-full bg-goldlt"/>
               {sectionKey === 'install' ? 'terminal' : sectionKey === 'ci' ? 'yaml' : 'code'}
             </span>
-            <span className="text-goldlt">✝</span>
+            <span className="text-goldlt">✓</span>
           </div>
           <pre className="p-5 whitespace-pre-wrap">{section.code}</pre>
         </div>
@@ -152,14 +152,14 @@ function GospelContent({ section, sectionKey, G, isKr }) {
 
       {/* footer action */}
       <div className="mt-12 flex items-center justify-between border-t border-ink/15 pt-6 font-mono text-[10px] tracking-[0.28em] uppercase">
-        <span className="text-ash">{isKr ? '본 페이지 편찬: 성직단' : 'Edited by the Clergy'}</span>
+        <span className="text-ash">{isKr ? '편집: Halus 팀' : 'Maintained by the Halus team'}</span>
         <span className="flex items-center gap-2 text-gold">
-          <Cross size={9}/>
-          {isKr ? '축성됨' : 'sanctified'}
+          <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
+          {isKr ? '검증 및 서명 완료' : 'verified · signed'}
         </span>
       </div>
     </div>
   );
 }
 
-Object.assign(window, { GospelView });
+Object.assign(window, { DocsView });

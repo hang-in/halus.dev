@@ -1,19 +1,19 @@
 // Features.jsx — strict single-language; Letter Pipeline restyled as a monitor
 
-// ─── Demo 1: Soul-Print Extraction ──────────────────────────────────────
-function SoulExtractionDemo({ t, isKr }) {
+// ─── Demo 1: Ethical Surface Analysis ──────────────────────────────────────
+function SurfaceAnalysisDemo({ t, isKr }) {
   const [pct, setPct] = React.useState(0);
   React.useEffect(() => {
     const id = setInterval(() => setPct((p) => (p >= 100 ? 0 : p + 1)), 110);
     return () => clearInterval(id);
   }, []);
 
-  const guilts = [
+  const findings = [
     'repo/legacy-v1/',
     'vendor/stolen-chart.js',
     'copied-from-SO#7821',
     'AI-assisted-commit-4f9a1',
-    'TODO: credit original',
+    'pending-attribution-scan',
   ];
 
   const E = t.extractor;
@@ -28,7 +28,7 @@ function SoulExtractionDemo({ t, isKr }) {
       <div className="relative h-44 border border-ink/30">
         <div className="absolute inset-x-0 top-0 h-1/2 border-b border-ink/20 p-2 overflow-hidden">
           <div className={`text-ash mb-1 ${isKr ? 'font-kr text-[10px]' : 'text-[9px] tracking-[0.2em] uppercase'}`}>{E.guilt}</div>
-          {guilts.slice(0, Math.max(1, 3 - Math.floor(pct / 40))).map((g) => (
+          {findings.slice(0, Math.max(1, 3 - Math.floor(pct / 40))).map((g) => (
             <div key={g} className="flex items-center gap-2 text-ink/70 leading-tight">
               <span className="text-gold">·</span>
               <span className="truncate">{g}</span>
@@ -42,9 +42,9 @@ function SoulExtractionDemo({ t, isKr }) {
         <div className="absolute inset-x-0 bottom-0 h-1/2 p-2 bg-parch/50">
           <div className={`text-sagedk mb-1 ${isKr ? 'font-kr text-[10px]' : 'text-[9px] tracking-[0.2em] uppercase'}`}>{E.pure}</div>
           <div className="text-ink/80 leading-tight">
-            <div>const soul = pure(</div>
-            <div>&nbsp;&nbsp;commit.map(repent)</div>
-            <div>); <span className="text-gold">// ✝</span></div>
+            <div>const surface = analyze(</div>
+            <div>&nbsp;&nbsp;commit.map(review)</div>
+            <div>); <span className="text-gold">// ✓</span></div>
           </div>
         </div>
       </div>
@@ -250,8 +250,8 @@ function VibeDemo({ t, isKr }) {
 // ─── Feature row + section ──────────────────────────────────────────────
 function FeatureRow({ feat, idx, isKr, t }) {
   const flip = idx % 2 === 1;
-  const demos = [SoulExtractionDemo, LicenseLoopDemo, VibeDemo];
-  const Demo = demos[idx] || SoulExtractionDemo;
+  const demos = [SurfaceAnalysisDemo, LicenseLoopDemo, VibeDemo];
+  const Demo = demos[idx] || SurfaceAnalysisDemo;
 
   return (
     <article className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-20 border-b border-ink/20 last:border-b-0">
@@ -272,7 +272,7 @@ function FeatureRow({ feat, idx, isKr, t }) {
         <ul className="mt-8 space-y-3">
           {feat.bullets.map((b, i) => (
             <li key={i} className="flex items-start gap-3">
-              <Cross size={11} className="text-gold mt-[7px] shrink-0"/>
+              <span className="w-1.5 h-1.5 rounded-full bg-gold mt-[9px] shrink-0"/>
               <span className={`text-ink/85 leading-snug ${isKr ? 'font-kr text-base leading-[1.8]' : 'font-serif text-lg'}`}>{b}</span>
             </li>
           ))}
@@ -305,12 +305,12 @@ function Features({ t, lang }) {
   // Emphasize last word in title with gold
   const parts = t.pillars.title.split(' ');
   return (
-    <section id="rites" className="border-b border-ink">
+    <section id="platform-infrastructure" className="border-b border-ink">
       <div className="max-w-[1400px] mx-auto px-6 pt-24 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-7">
             <div className={`text-gold mb-5 flex items-center gap-3 ${isKr ? 'font-kr text-sm' : 'font-mono text-[10px] tracking-[0.3em] uppercase'}`}>
-              <Cross size={10}/> {t.pillars.eyebrow}
+              <span className="w-2 h-2 rounded-full bg-gold"/> {t.pillars.eyebrow}
             </div>
             <h2 className={`text-ink ${isKr ? 'font-kr font-medium text-5xl leading-[1.2]' : 'font-serif text-6xl leading-[0.95] tracking-[-0.02em]'}`}>
               {parts.map((w, i) =>

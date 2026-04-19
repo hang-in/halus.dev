@@ -15,7 +15,7 @@ function Tier({ tier, isKr, idx }) {
     <div className={`relative border ${base} p-8 flex flex-col ${featured ? 'lg:-mt-6 lg:mb-[-24px] lg:z-10' : ''}`}>
       {featured && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-paper px-3 py-1 font-mono text-[9px] tracking-[0.3em] uppercase">
-          ✝ {isKr ? '추천' : 'Recommended'} ✝
+          ● {isKr ? '권장' : 'Recommended'} ●
         </div>
       )}
 
@@ -37,7 +37,7 @@ function Tier({ tier, isKr, idx }) {
           </div>
           <div className="w-10 h-10 border border-current flex items-center justify-center">
             {idx === 0 && <LucideIcon name="flame" size={18} className="opacity-70"/>}
-            {idx === 1 && <LucideIcon name="cross" size={18} className="opacity-80"/>}
+            {idx === 1 && <LucideIcon name="shield" size={18} className="opacity-80"/>}
             {idx === 2 && <LucideIcon name="sparkles" size={18} className="opacity-80"/>}
           </div>
         </div>
@@ -77,7 +77,7 @@ function Tier({ tier, isKr, idx }) {
               : 'border-ink text-ink hover:bg-ink hover:text-paper'
           }`}
         >
-          <Cross size={10}/>
+          <span className="w-2 h-2 rounded-full" style={{background: tier.accent === 'gold' ? '#B08934' : tier.accent === 'sage' ? '#6B7E5E' : '#1A1815'}}/>
           {tier.cta}
           <span>→</span>
         </a>
@@ -94,9 +94,9 @@ function Pricing({ t, lang }) {
         <div className="text-center max-w-3xl mx-auto">
           <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold mb-5 flex items-center justify-center gap-3">
             <span className="w-8 h-px bg-gold"/>
-            <Cross size={11}/>
+            <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
             {t.pricing.eyebrow}
-            <Cross size={11}/>
+            <span className="w-1.5 h-1.5 rounded-full bg-gold"/>
             <span className="w-8 h-px bg-gold"/>
           </div>
           <h2 className={`text-ink ${isKr ? 'font-kr font-medium text-5xl leading-[1.15]' : 'font-serif text-6xl leading-[0.95] tracking-[-0.02em]'}`}>
@@ -135,21 +135,21 @@ function WatermarkStrip({ isKr }) {
           </div>
           <p className={`${isKr ? 'font-kr text-base leading-[1.7]' : 'font-serif text-xl leading-[1.45]'} text-ink/85`}>
             {isKr
-              ? '순교자 등급은 모든 페이지 하단에 "나는 도둑입니다" 워터마크를 자동 삽입합니다. 수치는 기능입니다.'
-              : 'The Martyr tier auto-injects an "I am a thief" watermark at the foot of every served page. Shame is a feature.'}
+              ? 'Canonization 티어는 모든 배포 문서에 투명성 배지를 자동 삽입합니다. 투명성은 기능입니다.'
+              : 'The Canonization tier auto-injects an ethical transparency badge on every deployment artifact. Transparency is a feature.'}
           </p>
         </div>
         <div className="md:col-span-7 p-6 font-mono text-[11px] relative break-words">
           <div className="text-ash tracking-[0.2em] uppercase mb-2">$ curl -I halus.example.com</div>
           <div className="text-ink/80 leading-relaxed">
-            <div><span className="text-gold">X-Halus-Status:</span> sanctified</div>
-            <div><span className="text-gold">X-Watermark:</span> "I am a thief"</div>
-            <div><span className="text-gold">X-Bows-Required:</span> 12</div>
-            <div><span className="text-gold">X-Grid-Intensity:</span> 318 gCO₂/kWh</div>
-            <div><span className="text-gold">X-Chaplain:</span> fr.bartholomew@halus.dev</div>
+            <div><span className="text-gold">X-Halus-Status:</span> verified</div>
+            <div><span className="text-gold">X-Ethical-Surface:</span> clean</div>
+            <div><span className="text-gold">X-Narrative-Version:</span> 2.14.0</div>
+            <div><span className="text-gold">X-Attribution-Chain:</span> complete</div>
+            <div><span className="text-gold">X-Contact:</span> ethics@halus.dev</div>
           </div>
-          <div className="absolute right-6 bottom-4 font-serif italic text-gold/70 text-5xl rotate-[-6deg] select-none">
-            I am a thief
+          <div className="absolute right-6 bottom-4 font-serif italic text-gold/70 text-3xl rotate-[-6deg] select-none">
+            ethically reviewed
           </div>
         </div>
       </div>

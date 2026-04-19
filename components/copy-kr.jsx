@@ -6,7 +6,7 @@ window.COPY_KR = {
     nav: {
       features: '플랫폼',
       pricing: '요금제',
-      scripture: '인사이트',
+      insights: '인사이트',
       login: '고객 포털',
     },
 
@@ -19,15 +19,15 @@ window.COPY_KR = {
 
     routes: {
       home: '홈',
-      scripture: '인사이트',
-      gospel: '문서',
-      confessional: '도입 사례',
-      scriptureSub: '팀이 발행하는 관점과 프레임워크',
-      gospelSub: '기술 문서 및 연동 안내',
-      confessionalSub: '익명화된 마이그레이션 사례',
+      insights: '인사이트',
+      docs: '문서',
+      caseStudies: '도입 사례',
+      insightsSub: '팀이 발행하는 관점과 프레임워크',
+      docsSub: '기술 문서 및 연동 안내',
+      caseStudiesSub: '익명화된 마이그레이션 사례',
     },
 
-    scripture: {
+    insights: {
       ctaExamine: '자세히 읽기',
       ctaBack: '피드로 돌아가기',
       articleMeta: '분류',
@@ -90,7 +90,7 @@ window.COPY_KR = {
       ],
     },
 
-    gospel: {
+    docs: {
       eyebrow: '문서',
       title: '플랫폼 작동 방식.',
       sub: 'halus를 설치하고 CI 파이프라인에 연동하여 조직 전반의 윤리적 과부하 관리를 시작하십시오.',
@@ -101,7 +101,7 @@ window.COPY_KR = {
         { k: 'linter',   label: '윤리 린터' },
         { k: 'rules',    label: '룰 카탈로그' },
         { k: 'ci',       label: 'CI 연동' },
-        { k: 'bows',     label: '인정 세레모니' },
+        { k: 'acks',     label: '인정 프로토콜' },
         { k: 'faq',      label: 'FAQ' },
       ],
       sections: {
@@ -139,11 +139,11 @@ window.COPY_KR = {
             'GitHub Action은 IV~V 등급 발견 시 머지를 차단하고, 낮은 등급에 대해서는 시정 제안을 PR에 주석으로 남깁니다.',
           ],
         },
-        bows: {
-          title: '인정 세레모니',
+        acks: {
+          title: '인정 프로토콜',
           body: [
-            '인정 단계는 선택적인 휴먼 인 더 루프(human-in-the-loop) 검증입니다. 최소 한 명의 팀원이 릴리스의 윤리적 표면을 의식적으로 검토했음을 보장합니다.',
-            '이 단계는 의도적으로 자동화가 불가합니다. 일정 수준의 마찰은 기능입니다.',
+            '인정 프로토콜은 필수적인 휴먼 인 더 루프(human-in-the-loop) 검증 단계입니다. 최소 한 명의 팀원이 릴리스의 윤리적 표면을 의식적으로 검토했음을 보장합니다.',
+            '이 단계는 모든 자동화된 발견 사항이 맥락화되고 귀속되었음을 확인합니다. 일정 수준의 마찰은 기능입니다.',
           ],
         },
         faq: {
@@ -157,7 +157,7 @@ window.COPY_KR = {
       },
     },
 
-    confessional: {
+    caseStudies: {
       eyebrow: '도입 사례 · 마이그레이션',
       title: '법적 준수에서 심리적 안정으로: 마이그레이션 사례.',
       sub: '라이선스 컴플라이언스만으로는 부족했던 팀들이 관리형 윤리 인프라로 전환한 이야기. 이름은 익명 처리, 직책은 검증 완료.',
@@ -229,7 +229,7 @@ window.COPY_KR = {
       ledger: {
         heading: '실시간 플랫폼 지표',
         reposLabel: '모니터링 중인 저장소',
-        bowsLabel: '기록된 인정(Acknowledgment)',
+        acksLabel: '기록된 인정(Acknowledgment)',
         thanksLabel: '배포된 귀속 · 24h',
         gridLabel: '플랫폼 상태',
         gridValue: '정상(NOMINAL)',
@@ -427,7 +427,7 @@ window.COPY_KR = {
     footer: {
       verse:
         '"엔지니어가 npm install을 실행했다. 트리는 4,812 모듈 깊이였다. 아무도 크레딧되지 않았다. 빌드는 성공했다." — 내부 인시던트 리포트, 편집됨',
-      scriptureLabel: '인사이트',
+      insightsLabel: '인사이트',
       links: {
         '제품': ['플랫폼', '요금제', '윤리 린터', '변경 이력'],
         '리소스': ['인사이트', '문서', '도입 사례', '상태 페이지'],
@@ -437,7 +437,7 @@ window.COPY_KR = {
       tagline: 'AI-네이티브 팀을 위한 윤리 인프라',
       madeBy:
         '서울과 샌프란시스코에서 구축. malus.sh와는 제휴 관계가 없습니다.',
-      confessionLabel: '도입 사례',
+      caseStudiesLabel: '도입 사례',
       emailPh: 'hello@halus.dev',
       emailCta: '문의하기',
       copy: '© 2026 Halus, Inc. All rights reserved.',

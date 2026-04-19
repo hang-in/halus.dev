@@ -8,16 +8,16 @@ function Testimonials({ t, lang }) {
         <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
           <div>
             <div className="font-mono text-[10px] tracking-[0.3em] uppercase text-gold mb-3 flex items-center gap-3">
-              <Cross size={10}/> {t.testimonials.eyebrow}
+              <span className="w-2 h-2 rounded-full bg-gold"/> {t.testimonials.eyebrow}
             </div>
             <h2 className={`${isKr ? 'font-kr font-medium text-4xl' : 'font-serif text-5xl'} leading-[0.95] tracking-[-0.02em]`}>
-              {isKr ? <>숨겨진 <em className="text-gold not-italic">영혼들의</em> 증언.</> : <>Whispers from the <em className="text-gold not-italic">quietly absolved.</em></>}
+              {isKr ? <>{t.testimonials.heading_a} <em className="text-gold not-italic">{t.testimonials.heading_b}</em></> : <>{t.testimonials.heading_a} <em className="text-gold not-italic">{t.testimonials.heading_b}</em></>}
             </h2>
           </div>
           <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-ash max-w-xs">
             {isKr
-              ? '모든 증언은 고해 봉인 하에 수집됨. 이름은 가명 처리.'
-              : 'All testimony collected under seal of confession. Names changed.'}
+              ? t.testimonials.note
+              : t.testimonials.note}
           </div>
         </div>
 
@@ -32,7 +32,7 @@ function Testimonials({ t, lang }) {
               <figcaption className="font-mono text-[10px] tracking-[0.25em] uppercase text-ash flex items-center justify-between">
                 <span>{it.who}</span>
                 <span className="flex gap-[2px] text-gold">
-                  {'✝✝✝✝✝'.split('').map((c, i) => <span key={i}>{c}</span>)}
+                  {'★★★★★'.split('').map((c, i) => <span key={i}>{c}</span>)}
                 </span>
               </figcaption>
             </figure>

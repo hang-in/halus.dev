@@ -44,9 +44,9 @@ function App() {
 
   let body;
   switch (view) {
-    case 'scripture':    body = <ScriptureView t={t} lang={lang}/>; break;
-    case 'gospel':       body = <GospelView t={t} lang={lang}/>; break;
-    case 'confessional': body = <ConfessionalView t={t} lang={lang}/>; break;
+    case 'insights':     body = <InsightsView t={t} lang={lang}/>; break;
+    case 'docs':         body = <DocsView t={t} lang={lang}/>; break;
+    case 'caseStudies':  body = <CaseStudiesView t={t} lang={lang}/>; break;
     case 'home':
     default:             body = <HomeView t={t} lang={lang}/>;
   }
