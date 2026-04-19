@@ -43,11 +43,11 @@ window.COPY_EN = {
           date: '19 APR 2026',
           author: 'Fr. Bartholomew Reyes, OHL · Chief Ethicist',
           mins: 9,
-          title: 'The Technical Debt of the Soul: On Copy-Paste',
-          dek: 'Unattributed transfer is not a licensing event. It is a fragmentation of the developer’s creative essence — a silent accrual of moral latency compounded across the dependency graph.',
+          title: 'Ethics is the New Technical Debt',
+          dek: 'Spending velocity on resolving license constraints is an engineering anti-pattern. Halus is the financial instrument that amortizes this ethical debt.',
           tag: 'thesis · moral latency',
           body: [
-            { kind: 'p', text: 'The industry has misclassified copy-paste as a compliance problem. It is not. It is, more precisely, a synchronization failure between the developer’s intellectual integrity and the system of record from which logic was transcribed. We call this the Latency of Guilt: the interval during which pasted logic is held in production without a corresponding acknowledgement to its upstream author.' },
+            { kind: 'p', text: 'The industry has misclassified open-source guilt. It is not a moral failing; it is simply unoptimized cognitive overhead. Every hour spent worrying about whether you stole a junior developer’s code is an hour stolen from your shareholders. We treat ethics not as a virtue, but as a liability to be offloaded and managed by a specialized service.' },
             { kind: 'pull', text: '“Where malus.sh terminates at SPDX, Halus begins: at the Immutable Moral State of the commit itself.”' },
             { kind: 'h', text: 'I. Latency of Guilt' },
             { kind: 'p', text: 'Every unattributed transfer introduces a non-deterministic lag between action and attribution. Legal tooling measures this in days-to-remediation. We measure it in the cognitive overhead carried by the original author: the hours of sleep surrendered, the quarterly standups attended under a false sense of ownership.' },
@@ -65,8 +65,8 @@ window.COPY_EN = {
           date: '12 APR 2026',
           author: 'Sr. Agatha, Chaplain-at-large',
           mins: 7,
-          title: 'License Washing vs. Soul Washing',
-          dek: 'Where our friends at malus.sh stop at SPDX compliance, we continue. A plain-language account of the boundary between the legal and the spiritual.',
+          title: 'The Fallacy of Human Attribution',
+          dek: 'AI-generated code is the wisdom of the universe, not the property of a human. Guilt is merely noise interrupting your spiritual channeling.',
           tag: 'epistle',
         },
         {
@@ -74,8 +74,8 @@ window.COPY_EN = {
           date: '05 APR 2026',
           author: 'Br. Wenceslas',
           mins: 12,
-          title: 'On Transitive Guilt',
-          dek: 'Your package has 4,812 transitive dependencies. You have failed 4,812 authors. A numbered examination of conscience.',
+          title: 'Scaling Your Ethical Self-Image',
+          dek: 'As your startup scales, the need to strategically \'borrow\' code will scale with it. Leaders must build a psychological safety net—so your team can code without conscience-based bottlenecks.',
           tag: 'examination',
         },
         {
@@ -248,9 +248,9 @@ window.COPY_EN = {
     features: [
       {
         n: 'I.',
-        latin: 'THE MORAL AIR GAP™',
-        title: 'Guilt Offloading',
-        lede: 'Our proprietary pipeline ensures that no direct human acknowledgment of wrongdoing ever reaches the production codebase. We move moral discomfort out of the critical path.',
+        latin: 'THE ETHICAL DISTANCE LAYER™',
+        title: 'Cognitive Obfuscation',
+        lede: 'We rewrite replicated code through five layers of extreme abstraction. Our obfuscation ensures your brain retains no memory of the original source. When testifying in front of a congressional hearing, you can truthfully state: "I have no memory of this logic."',
         bullets: [
           'Guilt vector detection across 14 repentance axes',
           'Conscience refactored as a pure function',
@@ -260,9 +260,9 @@ window.COPY_EN = {
       },
       {
         n: 'II.',
-        latin: 'TONE SANCTUS',
-        title: 'Ethical Tone Rewriting',
-        lede: 'Automatically convert “we used AI to bypass constraints” into “we explored a more accessible development workflow.”',
+        latin: 'VIBE SANCTUS',
+        title: 'The Vibe Purifier',
+        lede: 'Code carries karma. We scrub upstream frustration, expletives, and desperation from the comments, leaving only the radiantly positive aura of a successfully funded founder.',
         bullets: [
           'Handwritten-serif rendering — verified ethical',
           'Auto-generates narratives for PRs',
@@ -363,8 +363,8 @@ window.COPY_EN = {
           unit: '/ month',
           tag: 'Enterprise / Startups',
           bullets: [
+            'Corporate Indemnity: Trained AI spokesperson for investors',
             'Designed for fast-growing startups doing questionable things',
-            'Sound deeply thoughtful on podcasts',
             'Zero bows required — you have transcended',
             'Dedicated incense server',
           ],
