@@ -32,7 +32,7 @@ window.COPY_EN = {
       ctaBack: 'Back to feed',
       articleMeta: 'Filed under',
       eyebrow: 'Insights · Perspectives',
-      title: 'Thinking about the ethics you'd rather not think about.',
+      title: 'Thinking about the ethics you\u2019d rather not think about.',
       sub: 'Research, frameworks, and position papers from the Halus team.',
       latest: 'Most recent',
       readTime: 'min read',
