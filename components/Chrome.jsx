@@ -37,7 +37,7 @@ function StatusBar({ t, lang, setLang }) {
   );
 }
 
-function Nav({ t, lang, view, setView, theme, setTheme }) {
+function Nav({ t, lang, setLang, view, setView, theme, setTheme }) {
   const isKr = lang === 'kr';
   const routes = [
     { k: 'home',         label: t.routes.home },
@@ -50,7 +50,7 @@ function Nav({ t, lang, view, setView, theme, setTheme }) {
 
   return (
     <nav className="border-b border-ink bg-paper sticky top-0 z-40 paper-grain">
-      <div className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between gap-6">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-4 md:gap-6">
         <a href="#" onClick={onGo('home')} className="flex items-center gap-3 group shrink-0">
           <span className="relative inline-flex items-center justify-center w-9 h-9 border border-ink bg-paper">
             <span className="absolute inset-[3px] border border-gold"/>
@@ -62,7 +62,7 @@ function Nav({ t, lang, view, setView, theme, setTheme }) {
               <span>halus</span>
               <span className="inline-flex items-center px-1.5 py-0.5 bg-ink text-paper font-mono text-[9px] tracking-[0.18em] uppercase leading-none translate-y-[-2px]">.dev</span>
             </span>
-            <span className={`mt-1 text-ash ${isKr ? 'font-kr text-[10px]' : 'font-mono text-[9px] tracking-[0.2em] uppercase'}`}>
+            <span className={`mt-1 hidden sm:block text-ash ${isKr ? 'font-kr text-[10px]' : 'font-mono text-[9px] tracking-[0.2em] uppercase'}`}>
               {t.brandMeaning}
             </span>
           </span>
@@ -104,20 +104,37 @@ function Nav({ t, lang, view, setView, theme, setTheme }) {
         </div>
       </div>
       {/* Mobile nav strip */}
-      <div className={`md:hidden border-t border-ink/10 px-6 py-2.5 flex items-center gap-6 overflow-x-auto whitespace-nowrap ${isKr ? 'font-kr text-xs' : 'font-mono text-[9px] tracking-[0.2em] uppercase'}`}>
-        {routes.map((r) => {
-          const active = view === r.k;
-          return (
-            <a
-              key={`m-${r.k}`}
-              href={`#/${r.k}`}
-              onClick={onGo(r.k)}
-              className={`transition-colors ${active ? 'text-gold' : 'text-ink/60 hover:text-ink'}`}
-            >
-              {r.label}
-            </a>
-          );
-        })}
+      <div className={`md:hidden border-t border-ink/10 px-4 py-2.5 flex items-center justify-between overflow-x-auto whitespace-nowrap ${isKr ? 'font-kr text-xs' : 'font-mono text-[9px] tracking-[0.2em] uppercase'}`}>
+        <div className="flex items-center gap-5">
+          {routes.map((r) => {
+            const active = view === r.k;
+            return (
+              <a
+                key={`m-${r.k}`}
+                href={`#/${r.k}`}
+                onClick={onGo(r.k)}
+                className={`transition-colors ${active ? 'text-gold' : 'text-ink/60 hover:text-ink'}`}
+              >
+                {r.label}
+              </a>
+            );
+          })}
+        </div>
+        <div className="flex items-stretch ml-5 shrink-0 border border-ink/20 rounded-sm overflow-hidden">
+          <button
+            onClick={() => setLang('en')}
+            className={`px-2 py-1 transition-colors ${lang === 'en' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
+          >
+            EN
+          </button>
+          <span className="w-px bg-ink/20"/>
+          <button
+            onClick={() => setLang('kr')}
+            className={`px-2 py-1 transition-colors ${lang === 'kr' ? 'bg-ink text-paper' : 'text-ink/70 hover:text-ink'}`}
+          >
+            KR
+          </button>
+        </div>
       </div>
     </nav>
   );

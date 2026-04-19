@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <StatusBar t={t} lang={lang} setLang={setLang}/>
-      <Nav t={t} lang={lang} view={view} setView={setView} theme={theme} setTheme={setTheme}/>
+      <Nav t={t} lang={lang} setLang={setLang} view={view} setView={setView} theme={theme} setTheme={setTheme}/>
       <main>{body}</main>
       <Footer t={t} lang={lang} setView={setView}/>
     </div>
