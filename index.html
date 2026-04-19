@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>halus.dev — Moral Laundering as a Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Noto+Serif+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:   '#FAFAF5',
+          parch:   '#F1ECDD',
+          ink:     '#0A0A0A',
+          gold:    '#B08934',
+          goldlt:  '#D4B970',
+          sage:    '#8A9A7A',
+          sagedk:  '#5C6B52',
+          ash:     '#3A3A36',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          kr:    ['"Noto Serif KR"', 'serif'],
+          mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<!-- lucide icons as UMD -->
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+<style>
+  html, body { background: #FAFAF5; color: #0A0A0A; }
+  body { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+  .font-kr { font-family: 'Noto Serif KR', serif; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* paper grain */
+  .paper-grain {
+    background-color: #FAFAF5;
+    background-image:
+      radial-gradient(rgba(10,10,10,0.035) 1px, transparent 1px),
+      radial-gradient(rgba(176,137,52,0.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+  }
+  .parch-grain {
+    background-color: #F1ECDD;
+    background-image: radial-gradient(rgba(10,10,10,0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* sun/halo behind hero */
+  .halo {
+    background: radial-gradient(closest-side, rgba(212,185,112,0.35), rgba(212,185,112,0.08) 55%, transparent 72%);
+  }
+
+  /* gold rays */
+  .ray {
+    position: absolute;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #D4B970 30%, #D4B970 70%, transparent);
+    transform-origin: top center;
+  }
+
+  /* marching ants for "anointed" borders */
+  .anointed {
+    background-image:
+      linear-gradient(90deg, #B08934 50%, transparent 50%),
+      linear-gradient(90deg, #B08934 50%, transparent 50%),
+      linear-gradient(0deg, #B08934 50%, transparent 50%),
+      linear-gradient(0deg, #B08934 50%, transparent 50%);
+    background-size: 8px 1px, 8px 1px, 1px 8px, 1px 8px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  }
+
+  /* drop cap */
+  .dropcap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 5.5rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.35rem 0.6rem 0 0;
+    color: #B08934;
+    font-style: italic;
+  }
+
+  /* thin rule */
+  .rule { height: 1px; background: #0A0A0A; }
+  .rule-gold { height: 1px; background: #B08934; }
+
+  /* selection */
+  ::selection { background: #B08934; color: #FAFAF5; }
+
+  /* kbd style counter */
+  .counter-digit {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* fancy number */
+  .ornate-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* subtle float for halo */
+  @keyframes breathe {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50%      { opacity: 1;   transform: scale(1.02); }
+  }
+  .breathe { animation: breathe 7s ease-in-out infinite; }
+
+  /* scan line for watermark */
+  .watermark-scan {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(176,137,52,0.12) 0 2px,
+      transparent 2px 14px
+    );
+  }
+
+  /* smooth scroll */
+  html { scroll-behavior: smooth; }
+
+  /* hide the pure scrollbar on sacred rail */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* interactive cursor halo */
+  #cursor-halo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side, rgba(212,185,112,0.06), transparent);
+    mix-blend-mode: multiply;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+</style>
+</head>
+<body class="paper-grain text-ink antialiased">
+<div id="cursor-halo"></div>
+<div id="root"></div>
+
+<!-- COMPONENTS -->
+<script type="text/babel" src="components/copy.jsx"></script>
+<script type="text/babel" src="components/Ornaments.jsx"></script>
+<script type="text/babel" src="components/Chrome.jsx"></script>
+<script type="text/babel" src="components/Hero.jsx"></script>
+<script type="text/babel" src="components/Features.jsx"></script>
+<script type="text/babel" src="components/Pricing.jsx"></script>
+<script type="text/babel" src="components/Testimonials.jsx"></script>
+<script type="text/babel" src="components/Scripture.jsx"></script>
+<script type="text/babel" src="components/Gospel.jsx"></script>
+<script type="text/babel" src="components/Confessional.jsx"></script>
+<script type="text/babel" src="components/Footer.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+
+<script>
+  // Cursor Halo Interaction
+  document.addEventListener('DOMContentLoaded', () => {
+    const halo = document.getElementById('cursor-halo');
+    if (!halo) return;
+    
+    let isMouseIn = false;
+    
+    document.addEventListener('mousemove', (e) => {
+      if (!isMouseIn) {
+        halo.style.opacity = '1';
+        isMouseIn = true;
+      }
+      // Use requestAnimationFrame for smoother following if needed, 
+      // but direct top/left with CSS transform is usually fast enough
+      halo.style.left = e.clientX + 'px';
+      halo.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseleave', () => {
+       halo.style.opacity = '0';
+       isMouseIn = false;
+    });
+    document.addEventListener('mouseenter', () => {
+       halo.style.opacity = '1';
+       isMouseIn = true;
+    });
+  });
+</script>
+</body>
+</html>

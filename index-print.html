@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>halus.dev — Print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Noto+Serif+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          paper:   '#FAFAF5',
+          parch:   '#F1ECDD',
+          ink:     '#0A0A0A',
+          gold:    '#B08934',
+          goldlt:  '#D4B970',
+          sage:    '#8A9A7A',
+          sagedk:  '#5C6B52',
+          ash:     '#3A3A36',
+        },
+        fontFamily: {
+          serif: ['"Cormorant Garamond"', 'serif'],
+          kr:    ['"Noto Serif KR"', 'serif'],
+          mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        },
+      },
+    },
+  };
+</script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
+<style>
+  html, body { background: #FAFAF5; color: #0A0A0A; }
+  body { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+  .font-kr { font-family: 'Noto Serif KR', serif; }
+  .font-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .paper-grain {
+    background-color: #FAFAF5;
+    background-image:
+      radial-gradient(rgba(10,10,10,0.035) 1px, transparent 1px),
+      radial-gradient(rgba(176,137,52,0.04) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+  }
+  .parch-grain {
+    background-color: #F1ECDD;
+    background-image: radial-gradient(rgba(10,10,10,0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .dropcap::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 5.5rem;
+    line-height: 0.85;
+    float: left;
+    padding: 0.35rem 0.6rem 0 0;
+    color: #B08934;
+    font-style: italic;
+  }
+
+  .rule { height: 1px; background: #0A0A0A; }
+  .rule-gold { height: 1px; background: #B08934; }
+
+  ::selection { background: #B08934; color: #FAFAF5; }
+
+  .watermark-scan {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(176,137,52,0.12) 0 2px,
+      transparent 2px 14px
+    );
+  }
+
+  /* ─── PRINT RULES ─────────────────────────────────────────────── */
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  @media print {
+    html, body {
+      background: #FAFAF5 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* kill all animation + transitions so nothing renders mid-flight */
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    /* marquee: freeze at starting offset */
+    [class*="animate-["] {
+      animation: none !important;
+      transform: none !important;
+    }
+
+    /* hide sticky helpers that create awkward offsets in print */
+    .sticky { position: static !important; top: auto !important; }
+
+    /* hide the top status bar (language toggle, marquee "donate" link) — noisy in print */
+    body > #root > div > div:first-child { display: none !important; }
+
+    /* keep major sections on their own pages where it helps */
+    section { break-inside: auto; page-break-inside: auto; }
+    /* hero starts fresh; each subsequent section starts on its own page */
+    main > section + section { break-before: page; page-break-before: always; }
+
+    /* feature rows: avoid splitting text from its demo */
+    article { break-inside: avoid; page-break-inside: avoid; }
+    article + article { break-before: page; page-break-before: always; }
+
+    /* pricing tier cards: keep each tier together */
+    .tier-card { break-inside: avoid; page-break-inside: avoid; }
+
+    /* footer scripture + link grid each on own page */
+    footer { break-before: page; page-break-before: always; }
+
+    /* testimonials: keep each figure intact */
+    figure { break-inside: avoid; page-break-inside: avoid; }
+
+    /* form controls: leave visible but non-interactive feel */
+    input, button { box-shadow: none !important; }
+
+    /* hide the featured-tier vertical offset (lg:-mt-6) — flattens ranks on paper */
+    .lg\:-mt-6 { margin-top: 0 !important; }
+    .lg\:mb-\[-24px\] { margin-bottom: 0 !important; }
+
+    /* drop halo/sunburst opacity so the hero text reads crisply on printed paper */
+    .breathe, .breathe * { opacity: 0.55 !important; }
+
+    /* ensure the big italic display doesn't clip */
+    h1, h2, h3 { break-inside: avoid; page-break-inside: avoid; }
+
+    /* the live counters and bar chart render whatever their current state is — fine */
+    /* force marquee contents to wrap naturally in print */
+    .overflow-hidden { overflow: visible !important; }
+
+    /* keep narrow margins on large grids so they fit portrait width */
+    .max-w-\[1400px\] { max-width: 100% !important; }
+  }
+
+  /* Screen hint banner above the layout when viewing the file outside of print */
+  .print-hint {
+    background: #0A0A0A;
+    color: #FAFAF5;
+    padding: 10px 16px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  @media print { .print-hint { display: none !important; } }
+</style>
+</head>
+<body class="paper-grain text-ink antialiased">
+<div class="print-hint">halus.dev — print view · use browser print dialog to save as PDF</div>
+<div id="root"></div>
+
+<!-- COMPONENTS (shared with index.html so relative paths resolve identically) -->
+<script type="text/babel" src="components/copy.jsx"></script>
+<script type="text/babel" src="components/Ornaments.jsx"></script>
+<script type="text/babel" src="components/Chrome.jsx"></script>
+<script type="text/babel" src="components/Hero.jsx"></script>
+<script type="text/babel" src="components/Features.jsx"></script>
+<script type="text/babel" src="components/Pricing.jsx"></script>
+<script type="text/babel" src="components/Testimonials.jsx"></script>
+<script type="text/babel" src="components/Footer.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+
+<!-- Auto-print: wait for fonts, React mount, and a safety delay -->
+<script type="text/babel">
+(async function autoPrint() {
+  // wait for React root to mount
+  const waitForMount = () => new Promise((resolve) => {
+    const check = () => {
+      const root = document.getElementById('root');
+      if (root && root.children.length > 0) return resolve();
+      setTimeout(check, 80);
+    };
+    check();
+  });
+
+  // wait for fonts (Cormorant, Noto Serif KR, JetBrains Mono)
+  const waitForFonts = async () => {
+    if (document.fonts && document.fonts.ready) {
+      try { await document.fonts.ready; } catch {}
+    }
+  };
+
+  await waitForMount();
+  await waitForFonts();
+  // extra safety for lucide icons + tailwind JIT
+  await new Promise((r) => setTimeout(r, 700));
+  window.print();
+})();
+</script>
+
+</body>
+</html>
